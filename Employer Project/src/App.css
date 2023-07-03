@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-@import url('https://fonts.googleapis.com/css2?family=Passion+One&display=swap');
-=======
 /*
 Your selected colors:
 
@@ -48,6 +45,12 @@ body {
     grid-auto-flow: row;
     gap: 3vh;
 }
-
-
->>>>>>> 9f48614e5c3d195965bd1e5545b414d4412dd0ec
+.flipCard {
+    animation-name: cardFlip;
+    animation-duration: 200ms;
+}
+@keyframes cardFlip {
+    0% {transform: scaleX(100%);}
+    50% {transform: scaleX(0%);}
+    100% {transform: scaleX(100%);}
+}
