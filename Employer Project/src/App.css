@@ -24,6 +24,9 @@ Thanks for using RealtimeColors.com!
   height: 80vh;
   overflow: hidden;
 }
+.removeBorder {
+  border-style: none;
+}
 .largeText {
   font-size: 10vh;
 }
