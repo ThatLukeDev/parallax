@@ -12,6 +12,27 @@ Realtime Colors link for selected colors: https://realtimecolors.com/?colors=e8e
 Thanks for using RealtimeColors.com!
 */
 @import url('https://fonts.googleapis.com/css2?family=Passion+One&display=swap');
+.titleFont {
+  font-family: 'Passion One', cursive;
+}
+.mainOuter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  height: 80vh;
+  overflow: hidden;
+}
+.largeText {
+  font-size: 10vh;
+}
+.mediumText {
+  font-size: 5vh;
+}
+.smallText {
+  font-size: 2vh;
+}
 .primaryColour {
   color: #e8e8e8;
 }
@@ -45,6 +66,7 @@ body {
     grid-auto-flow: row;
     gap: 3vh;
 }
+
 .flipCard {
     animation-name: cardFlip;
     animation-duration: 200ms;
