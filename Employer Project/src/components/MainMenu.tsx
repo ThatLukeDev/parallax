@@ -17,6 +17,12 @@ const MainMenu = () => {
         <input type="text" className='secondaryColour mediumText' id="playernameBox" placeholder='username...' />
         <button className='removeBorder secondaryColour mediumText' onClick={() => play()}>PLAY</button>
       </div>
+      <div>
+        <button className='removeBorder secondaryColour smallText squareBtn' onClick={() => play()}>4</button>
+        <button className='removeBorder secondaryColour smallText squareBtn' onClick={() => play()}>9</button>
+        <button className='removeBorder secondaryColour smallText squareBtn' onClick={() => play()}>16</button>
+        <button className='removeBorder secondaryColour smallText squareBtn' onClick={() => play()}>25</button>
+      </div>
     </div>
   )
 }

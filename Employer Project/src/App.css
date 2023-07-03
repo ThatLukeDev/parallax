@@ -26,6 +26,11 @@ Thanks for using RealtimeColors.com!
 }
 .removeBorder {
   border-style: none;
+  margin-left: .1vw;
+}
+.squareBtn {
+  width: 5vh;
+  height: 5vh;
 }
 .largeText {
   font-size: 10vh;
@@ -34,7 +39,7 @@ Thanks for using RealtimeColors.com!
   font-size: 5vh;
 }
 .smallText {
-  font-size: 2vh;
+  font-size: 2.5vh;
 }
 .primaryColour {
   color: #e8e8e8;
