@@ -27,6 +27,7 @@ Thanks for using RealtimeColors.com!
 .removeBorder {
   border-style: none;
   margin-left: .1vw;
+  margin-top: .1vw;
 }
 .squareBtn {
   width: 5vh;
