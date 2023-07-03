@@ -1,4 +1,35 @@
+<<<<<<< HEAD
 @import url('https://fonts.googleapis.com/css2?family=Passion+One&display=swap');
+=======
+/*
+Your selected colors:
+
+    Primary: #e8e8e8 (RGB: 232, 232, 232)
+    Secondary: #050505 (RGB: 5, 5, 5)
+    Primary Button: #9c9c9c (RGB: 156, 156, 156)
+    Secondary Button: #0f0f0f (RGB: 15, 15, 15)
+    Accent: #696969 (RGB: 105, 105, 105)
+
+Realtime Colors link for selected colors: https://realtimecolors.com/?colors=e8e8e8-050505-9c9c9c-0f0f0f-696969
+
+Thanks for using RealtimeColors.com!
+*/
+@import url('https://fonts.googleapis.com/css2?family=Passion+One&display=swap');
+.primaryColour {
+  color: #e8e8e8;
+}
+.secondaryColour {
+  color: #050505;
+}
+.primaryButtonColour {
+  background-color: #9c9c9c;
+}
+.secondaryButtonColour {
+  background-color: #0f0f0f;
+}
+.accentColour {
+  background-color: #696969;
+}
 body {
     background-color: #050505;
 }
@@ -17,3 +48,6 @@ body {
     grid-auto-flow: row;
     gap: 3vh;
 }
+
+
+>>>>>>> 9f48614e5c3d195965bd1e5545b414d4412dd0ec
