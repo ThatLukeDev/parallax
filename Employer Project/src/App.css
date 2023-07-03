@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-@import url('https://fonts.googleapis.com/css2?family=Passion+One&display=swap');
-=======
 /*
 Your selected colors:
 
@@ -15,6 +12,18 @@ Realtime Colors link for selected colors: https://realtimecolors.com/?colors=e8e
 Thanks for using RealtimeColors.com!
 */
 @import url('https://fonts.googleapis.com/css2?family=Passion+One&display=swap');
+.titleFont {
+  font-family: 'Passion One', cursive;
+}
+.mainOuter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
 .primaryColour {
   color: #e8e8e8;
 }
@@ -50,4 +59,3 @@ body {
 }
 
 
->>>>>>> 9f48614e5c3d195965bd1e5545b414d4412dd0ec
