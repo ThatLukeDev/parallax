@@ -2,28 +2,35 @@ import { useEffect } from 'react'
 
 const MainMenu = () => {
   let getCookie = (name : string) => {
-    return document.cookie.split(name + "=")[1].split(";")[0]
+    return document.cookie.split(name + "=")[1].split(";")[0];
   }
   let setCookie = (name : string, content : string) => {
     document.cookie = name + "=" + content;
   }
+  let setPlayerCookie = (username : string, difficulty : number, highscore : number) => {
+    setCookie(username, `${username}, ${difficulty.toString()}, ${highscore.toString()}`);
+  }
+  let getPlayerCookie = (username : string) => {
+    let cook = getCookie(username).split(", ");
+    return [cook[0], cook[1], cook[2]];
+  }
   let play = () => {
-    setCookie("currentPlayer", document.getElementById("playernameBox")!.value)
-    setCookie("highscore", "0")
+    setCookie("currentPlayer", document.getElementById("playernameBox")!.value);
+    setCookie("highscore", "0");
   }
   let chooseAmount = (amount : number) => {
-    setCookie("amountOfCards", amount.toString())
-    document.getElementById("cardSelections")?.childNodes.forEach((x) => {
-      if (x.innerText == amount.toString()) {
-        x.classList.remove("primaryButtonColour")
+    setCookie("amountOfCards", amount.toString());
+    document.getElementById("cardSelections")?.childNodes.forEach((x) => {;
+      if (x.innerText == amount.toString()) {;
+        x.classList.remove("primaryButtonColour");
       }
       else {
-        x.classList.add("primaryButtonColour")
+        x.classList.add("primaryButtonColour");
       }
     })
   }
   useEffect(() => {
-    chooseAmount(4)
+    chooseAmount(4);
   }, [])
   
   return (
