@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
 
-const Card = ({contents}) => {
+const Card = ({contents, cardClicked, number}) => {
   const [shown, setShown] = useState(false)
   if (shown) {
-    document.querySelector(".cardOuter")?.classList.add("flipCard")
+    document.querySelector(`.${number.toString()}`)?.classList.add("flipCard")
     setTimeout(() => {
       setShown(false)
-      document.querySelector(".cardOuter")?.classList.remove("flipCard")
+      document.querySelector(`.${number.toString()}`)?.classList.remove("flipCard")
     }, 1000);
   }
   var dict = {
@@ -18,7 +18,7 @@ const Card = ({contents}) => {
     5: "<form>",
   }
   return (
-    <div className='cardOuter' onClick={() => setShown(true)}>
+    <div className={`cardOuter ${number.toString()}`} onClick={() => {setShown(true); cardClicked(contents); console.log("hello world")}}>
       {shown ? dict[contents] : <div></div>}
     </div>
   )
