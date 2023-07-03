@@ -24,6 +24,15 @@ Thanks for using RealtimeColors.com!
   height: 100vh;
   overflow: hidden;
 }
+.largeText {
+  font-size: 10vh;
+}
+.mediumText {
+  font-size: 5vh;
+}
+.smallText {
+  font-size: 2vh;
+}
 .primaryColour {
   color: #e8e8e8;
 }
