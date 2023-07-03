@@ -1,4 +1,4 @@
-import React from 'react'
+import { useEffect } from 'react'
 
 const MainMenu = () => {
   let getCookie = (name : string) => {
@@ -9,19 +9,36 @@ const MainMenu = () => {
   }
   let play = () => {
     setCookie("currentPlayer", document.getElementById("playernameBox")!.value)
+    setCookie("highscore", "0")
   }
+  let chooseAmount = (amount : number) => {
+    setCookie("amountOfCards", amount.toString())
+    document.getElementById("cardSelections")?.childNodes.forEach((x) => {
+      if (x.innerText == amount.toString()) {
+        x.classList.remove("primaryButtonColour")
+      }
+      else {
+        x.classList.add("primaryButtonColour")
+      }
+    })
+  }
+  useEffect(() => {
+    chooseAmount(4)
+  }, [])
+  
   return (
     <div className='mainOuter'>
       <h1 className='titleFont largeText primaryColour'>CARD FLIPPER</h1>
       <div>
-        <input type="text" className='secondaryColour mediumText' id="playernameBox" placeholder='username...' />
+        <input type="text" className='secondaryColour mediumText' id="playernameBox" placeholder='Username...' />
         <button className='removeBorder secondaryColour mediumText' onClick={() => play()}>PLAY</button>
       </div>
-      <div>
-        <button className='removeBorder secondaryColour smallText squareBtn' onClick={() => play()}>4</button>
-        <button className='removeBorder secondaryColour smallText squareBtn' onClick={() => play()}>9</button>
-        <button className='removeBorder secondaryColour smallText squareBtn' onClick={() => play()}>16</button>
-        <button className='removeBorder secondaryColour smallText squareBtn' onClick={() => play()}>25</button>
+      <div id="cardSelections">
+        <button className='removeBorder secondaryColour smallText squareBtn' onClick={() => chooseAmount(4)}>4</button>
+        <button className='removeBorder secondaryColour smallText squareBtn' onClick={() => chooseAmount(8)}>8</button>
+        <button className='removeBorder secondaryColour smallText squareBtn' onClick={() => chooseAmount(12)}>12</button>
+        <button className='removeBorder secondaryColour smallText squareBtn' onClick={() => chooseAmount(16)}>16</button>
+        <button className='removeBorder secondaryColour smallText squareBtn' onClick={() => chooseAmount(20)}>20</button>
       </div>
     </div>
   )

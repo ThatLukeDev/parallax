@@ -8,7 +8,7 @@ import Game from './components/Game'
 function App() {
   return (
     <div>
-      <Game />
+      <MainMenu />
     </div>
   )
 }
