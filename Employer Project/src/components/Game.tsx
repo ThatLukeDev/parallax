@@ -41,13 +41,9 @@ const Game = () => {
   const [currentScore, setCurrentScore] = useState(0)
   const cardClicked = (cardKey:number, key:number) => {
     arr.push(key)
-    console.log(arr.length)
     if (cardKey == selectedCard) {
       setCardFlipped([cardKey, "delete"])
-      setCurrentScore(currentScore + 2)
-      if (Number(getCookie("highscore")) < currentScore) {
-        setPlayerCookie(getCookie("currentPlayer"), Number(getCookie("amountOfCards")), currentScore)
-      }
+      setCurrentScore(currentScore + 1)
     }
     else if (arr.length == 2) {
       arr = []
@@ -59,6 +55,11 @@ const Game = () => {
     selectedCard = cardKey
     selectedKey = key 
   }
+  useEffect(() => {
+    if (Number(getCookie("highscore")) < currentScore) {
+      setPlayerCookie(getCookie("currentPlayer"), Number(getCookie("amountOfCards")), currentScore)
+    }
+  }, [currentScore])
   
 
   return (

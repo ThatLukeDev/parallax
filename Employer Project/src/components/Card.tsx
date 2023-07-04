@@ -12,7 +12,6 @@ const Card = ({cardFlipped, contents, cardClicked, number, cardNumber}) => {
       setShown(false)
     }, 1000)
   }
-  console.log(cardFlipped) 
   if (cardFlipped != undefined && shown && cardFlipped[0] == "universalNo") {
     setTimeout(() => {
       document.querySelector(`.${number}`)?.classList.remove("flipCard")
@@ -41,7 +40,7 @@ const Card = ({cardFlipped, contents, cardClicked, number, cardNumber}) => {
       if (cardNumber < 2) {
         setShown(true); 
       }
-      cardClicked(contents, number); console.log("hello world")}}>
+      cardClicked(contents, number)}}>
       {shown ? dict[contents] : <div></div>}
     </div>
   )
