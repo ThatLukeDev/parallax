@@ -61,9 +61,10 @@ const [scoreBoardEntries, setScoreBoardEntries] = useState([])
               <button className='removeBorder secondaryColour smallText squareBtn buttonClick' onClick={() => {toggleButtons(current)}} id={`${current}-card`}>{current}</button>
             )}
           </div>
+          <h1 className='noMargin primaryColour'>The Scores</h1>
           <div className='primaryColour scoreBoardContainer'  id='scoreboard'>
-            <h1 className='noMargin'>The Scores</h1>
             <div className='scoreRow'>
+              <h1></h1>
               <h1>Username</h1>
               <h1 className='rightElementTwo'>Cards</h1>
               <h1 className='rightElement'>Score</h1>
