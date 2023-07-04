@@ -30,10 +30,6 @@ const MainMenu = ({setState}) => {
     })
   }
   useEffect(() => {
-    document.getElementById("cardSelections")!.innerHTML = "";
-    for (let i = 8; i < 25; i += 8) {
-      document.getElementById("cardSelections")!.innerHTML += `<button class='removeBorder secondaryColour smallText squareBtn' onClick="document.cookie = 'amountOfCards=${i}'; document.getElementById('cardSelections')?.childNodes.forEach((x) => { if (x.innerText == '${i}') { x.classList.remove('primaryButtonColour'); } else { x.classList.add('primaryButtonColour'); }})">${i}</button>`;
-    }
     chooseAmount(8);
     clearScoreboard();
     document.cookie.split("; ").forEach((x) => {
@@ -54,6 +50,7 @@ const MainMenu = ({setState}) => {
           <button className='removeBorder secondaryColour mediumText' onClick={() => play()}>PLAY</button>
         </div>
         <div id="cardSelections">
+          <button class='removeBorder secondaryColour smallText squareBtn' onClick="document.cookie = 'amountOfCards=${i}'; document.getElementById('cardSelections')?.childNodes.forEach((x) => { if (x.innerText == '${i}') { x.classList.remove('primaryButtonColour'); } else { x.classList.add('primaryButtonColour'); }})">${i}</button>
         </div>
       </div>
       <div className='primaryColour' id='scoreboard'>

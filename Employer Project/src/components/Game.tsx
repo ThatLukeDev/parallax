@@ -42,12 +42,14 @@ const Game = ({gameOver}) => {
   const cardClicked = (cardKey:number, key:number) => {
     if (key != selectedKey) {
       arr.push(key)
+      // setSelectedCards(arr.length)
       if (cardKey == selectedCard) {
         setCardFlipped([cardKey, "delete"])
         setCurrentScore(currentScore + 1)
       }
       else if (arr.length == 2) {
         arr = []
+        // setSelectedCards(0)
         setCardFlipped(["universalNo", false])
         setTimeout(() => {
           setCardFlipped([])
