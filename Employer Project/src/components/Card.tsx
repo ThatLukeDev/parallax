@@ -13,10 +13,15 @@ const Card = ({cardFlipped, contents, cardClicked, number, cardNumber}) => {
     }, 1000)
   }
   console.log(cardFlipped) 
-  if (cardFlipped != undefined && shown && cardFlipped[0] == "universalNo" && cardNumber == 2) {
+  if (cardFlipped != undefined && shown && cardFlipped[0] == "universalNo") {
     setTimeout(() => {
       document.querySelector(`.${number}`)?.classList.remove("flipCard")
       setShown(false)
+    }, 1000)
+  }
+  if (cardFlipped != undefined && shown && cardFlipped[0] == contents && cardFlipped[1] == "delete") {
+    setTimeout(() => {
+      document.querySelector(`.${number}`)?.classList.add("hide")
     }, 1000)
   }
   var dict = {

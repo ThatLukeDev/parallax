@@ -12,7 +12,7 @@ const Game = () => {
   const [cardFlippedNo, setCardFlippedNo] = useState([])
   useEffect(() => {
     let count = 0
-    for (let i = 0; i < 6; i++) {
+    for (let i = 0; i < 5; i++) {
       let randIndex = 0
       let randIndexTwo = 0
       do {
@@ -35,39 +35,31 @@ const Game = () => {
 
   }, [])
   let arr = []
+  const [currentScore, setCurrentScore] = useState(0)
   const cardClicked = (cardKey:number, key:number) => {
-    // console.warn(key)
-    // arr.push(key)
-
-    // if (cardKey == selectedCard) {
-    //   setCardFlipped([cardKey, false])
-    //   setCardFlippedNo([])
-    //   console.error("Winner")
-    // }
-
-    // if (arr.length == 2) {
-    //   arr = []
-    //   setCardFlipped(["universalNo", false])
-    // }
-    // setSelectedCards(arr.length)
-    // console.warn(selectedCards)
     arr.push(key)
+    console.log(arr.length)
     if (cardKey == selectedCard) {
-      setCardFlipped(cardKey)
-      console.log("Winner")
+      setCardFlipped([cardKey, "delete"])
+      setCurrentScore(currentScore + 1)
     }
     else if (arr.length == 2) {
       arr = []
       setCardFlipped(["universalNo", false])
+      setTimeout(() => {
+        setCardFlipped([])
+      }, 150)
     }
     selectedCard = cardKey
     selectedKey = key 
   }
-
+  
 
   return (
-    <div className='cardHolder'>
+    <div className='gameHolder'>
+      <div className='cardHolder'>
         {cards ? cards.map((card, key) => <Card cardFlipped={cardFlipped} cardClicked={cardClicked} contents={card} number={key} cardNumber={selectedCards}/>) : null}
+      </div>
     </div>
   )
 }
