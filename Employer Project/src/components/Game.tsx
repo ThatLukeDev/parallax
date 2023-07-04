@@ -41,7 +41,7 @@ const Game = ({gameOver}) => {
       let randCard = 0;
       do {
         randCard = Math.floor(Math.random() * distinctCards);
-      } while (usedCards.includes(randCard))
+      } while (tableCards.includes(randCard))
       for (let j = 0; j < 2; j++) {
         let randIndex = 0;
         do {
