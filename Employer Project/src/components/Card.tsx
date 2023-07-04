@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 const Card = ({cardFlipped, contents, cardClicked, number, cardNumber}) => {
   const [shown, setShown] = useState(false)
   number = `idof${number}`
-  if (shown) {
+  if (shown && cardNumber < 2) {
     document.querySelector(`.${number}`)?.classList.add("flipCard")
   }
 
