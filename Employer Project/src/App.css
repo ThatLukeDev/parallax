@@ -102,7 +102,7 @@ body {
 }
 .cardHolder {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(8, 1fr);
   grid-auto-flow: row;
   margin-top: 2vh;
   gap: .2vh;
@@ -110,14 +110,26 @@ body {
 }
 
 .flipCard {
-    animation-name: cardFlip;
-    animation-duration: 200ms;
+  animation-name: cardFlip;
+  animation-duration: 200ms;
 }
 @keyframes cardFlip {
-    0% {transform: scaleX(100%);}
-    50% {transform: scaleX(0%);}
-    100% {transform: scaleX(100%);}
+  0% {transform: scaleX(100%);}
+  50% {transform: scaleX(0%);}
+  100% {transform: scaleX(100%);}
 }
 .cardText {
-  font-size: 15vh;
+  font-size: 4vh;
+}
+.textInCard {
+  transform: rotateZ(45deg);
+}
+.flipBack {
+  animation-name: flipBackCardAnimation;
+  animation-duration: 300ms;
+}
+@keyframes flipBackCardAnimation {
+  0% {transform: scaleX(100%);}
+  50% {transform: scaleX(0%);}
+  100% {transform: scaleX(100%);}
 }

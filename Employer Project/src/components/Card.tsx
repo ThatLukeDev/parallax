@@ -6,16 +6,15 @@ const Card = ({cardFlipped, contents, cardClicked, number, cardNumber}) => {
   if (shown && cardNumber < 2) {
     document.querySelector(`.${number}`)?.classList.add("flipCard")
   }
-  if (cardFlipped != undefined && cardFlipped[0] == contents && cardFlipped[1] == false && shown) {
-    setTimeout(() => {
-      document.querySelector(`.${number}`)?.classList.remove("flipCard")
-      setShown(false)
-    }, 1000)
-  }
+
   if (cardFlipped != undefined && shown && cardFlipped[0] == "universalNo") {
     setTimeout(() => {
-      document.querySelector(`.${number}`)?.classList.remove("flipCard")
-      setShown(false)
+      document.querySelector(`.${number}`)?.classList.add("flipBack");
+      document.querySelector(`.${number}`)?.classList.remove("flipCard");
+      setTimeout(() => {
+        setShown(false)
+        document.querySelector(`.${number}`)?.classList.remove("flipBack")
+      }, 200)
     }, 1000)
   }
   if (cardFlipped != undefined && shown && cardFlipped[0] == contents && cardFlipped[1] == "delete") {
@@ -38,10 +37,10 @@ const Card = ({cardFlipped, contents, cardClicked, number, cardNumber}) => {
   return (
     <div className={`cardOuter ${number} cardText`} onClick={() => {
       if (cardNumber < 2) {
-        setShown(true); 
+        setShown(true);
       }
       cardClicked(contents, number)}}>
-      {shown ? dict[contents] : <div></div>}
+      {shown ? <p className='textInCard'>{dict[contents]}</p> : <div></div>}
     </div>
   )
 }
