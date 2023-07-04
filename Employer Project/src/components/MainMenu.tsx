@@ -4,13 +4,13 @@ import ScoreComponent from './ScoreComponent';
 
 const MainMenu = ({setState}) => {
 const [scoreBoardEntries, setScoreBoardEntries] = useState([])
-  const enterToScoreboard = (username : string, amountOfCards : number, highscore : number) => {
+  // const enterToScoreboard = (username : string, amountOfCards : number, highscore : number) => {
     
-  }
+  // }
   let clearScoreboard = () => {
     document.getElementById("scoreboardBody")!.innerHTML = "<tr><th>___</th><th>USERNAME</th><th>CARDS</th><th>SCORE</th></tr>";
   }
-  let play = () => {
+  const play = () => {
     setCookie("currentPlayer", document.getElementById("playernameBox")!.value.replace(/(, )|<.+?>/g,"").substring(0,10));
     setCookie("highscore", "0");
     if (getCookie("PLAYER_" + getCookie("currentPlayer")) != null) {
