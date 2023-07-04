@@ -12,10 +12,10 @@ export let setCookie = (name : string, content : string) => {
   document.cookie = name + "=" + content;
 }
 export let setPlayerCookie = (username : string, difficulty : number, highscore : number) => {
-  setCookie("PLAYER_" + username, `${username}, ${difficulty.toString()}, ${highscore.toString()}`);
+  setCookie("PLAYER_" + username.replace(", ",""), `${username}, ${difficulty.toString()}, ${highscore.toString()}`);
 }
 export let getPlayerCookie = (username : string) => {
-  let cook = getCookie("PLAYER_" + username).split(", ");
+  let cook = getCookie("PLAYER_" + username.replace(", ","")).split(", ");
   return [cook[0], cook[1], cook[2]];
 }
 export let updateCurrentPlayerCookie = () => {
