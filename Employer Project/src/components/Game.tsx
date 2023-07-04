@@ -15,7 +15,7 @@ const Game = () => {
   useEffect(() => {
     let count = 0
     useCardsAmount = parseInt(getCookie("amountOfCards")) + 2
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 6; i++) {
       let randIndex = 0
       let randIndexTwo = 0
       do {
