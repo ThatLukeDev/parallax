@@ -6,7 +6,13 @@ import MainMenu from './components/MainMenu'
 import Game from './components/Game'
 
 export let getCookie = (name : string) => {
-  return document.cookie.split(name + "=")[1].split("; ")[0];
+  let retval = null
+  try {
+    retval = document.cookie.split(name + "=")[1].split("; ")[0]
+  } catch {
+    retval = null;
+  }
+  return retval;
 }
 export let setCookie = (name : string, content : string) => {
   document.cookie = name + "=" + content;
@@ -15,7 +21,7 @@ export let setPlayerCookie = (username : string, difficulty : number, highscore 
   setCookie("PLAYER_" + username.replace(/(, )|<.+?>/g,""), `${username}, ${difficulty.toString()}, ${highscore.toString()}`);
 }
 export let getPlayerCookie = (username : string) => {
-  let cook = getCookie("PLAYER_" + username.replace(/(, )|<.+?>/g,"")).split(", ");
+  let cook = getCookie("PLAYER_" + username.replace(/(, )|<.+?>/g,""))!.split(", ");
   return [cook[0], cook[1], cook[2]];
 }
 export let updateCurrentPlayerCookie = () => {

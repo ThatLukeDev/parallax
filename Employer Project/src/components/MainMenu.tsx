@@ -12,7 +12,10 @@ const MainMenu = ({setState}) => {
   let play = () => {
     setCookie("currentPlayer", document.getElementById("playernameBox")!.value.replace(/(, )|<.+?>/g,"").substring(0,10));
     setCookie("highscore", "0");
-    setPlayerCookie(getCookie("currentPlayer"), Number(getCookie("amountOfCards")), Number(getCookie("highscore")));
+    if (getCookie("PLAYER_" + getCookie("currentPlayer")) != null) {
+      setCookie("highscore", getPlayerCookie(getCookie("currentPlayer")!)[2])
+    }
+    setPlayerCookie(getCookie("currentPlayer")!, Number(getCookie("amountOfCards")), Number(getCookie("highscore")));
     setState(false);
   }
   let chooseAmount = (amount : number) => {
