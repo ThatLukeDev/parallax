@@ -1,7 +1,8 @@
 import { useEffect } from 'react'
+import { getCookie, setCookie, getPlayerCookie, setPlayerCookie, updateCurrentPlayerCookie } from '../App';
 
 const MainMenu = () => {
-  let getCookie = (name : string) => {
+  /*let getCookie = (name : string) => {
     return document.cookie.split(name + "=")[1].split(";")[0];
   }
   let setCookie = (name : string, content : string) => {
@@ -16,7 +17,7 @@ const MainMenu = () => {
   }
   let updateCurrentPlayerCookie = () => {
     setPlayerCookie(getCookie("currentPlayer"), getCookie("amountOfCards"), getCookie("highscore"))
-  }
+  }*/
   let play = () => {
     setCookie("currentPlayer", document.getElementById("playernameBox")!.value);
     setCookie("highscore", "0");
