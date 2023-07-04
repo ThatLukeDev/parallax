@@ -16,6 +16,16 @@ Thanks for using RealtimeColors.com!
 .titleFont {
   font-family: 'Passion One', cursive;
 }
+.scoreRow {
+  display: flex;
+  width: 100%;
+  height: 6vh;
+  position: relative;
+}
+.rightElement {
+  position: absolute;
+  right: 1vw;
+}
 .mainOuter {
   display: flex;
   justify-content: center;
@@ -24,7 +34,11 @@ Thanks for using RealtimeColors.com!
   width: 100%;
   height: 50vh;
   margin-top: 20vh;
-  overflow: hidden;
+}
+.scoreBoardContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }
 .removeBorder {
   border-style: none;
@@ -42,7 +56,10 @@ Thanks for using RealtimeColors.com!
   background-color: #73c9c6;
 }
 .largeText {
-  font-size: 10vh;
+  font-size: 20vh;
+  letter-spacing: 5px;
+  margin-bottom: 2vh;
+  margin-top: 4vh;
 }
 .mediumText {
   font-size: 5vh;
@@ -58,6 +75,13 @@ Thanks for using RealtimeColors.com!
   .mainOuter {
     height: 60vh;
   }
+}
+.rightElementTwo {
+  right: 8vw;
+  position: absolute;
+}
+.noMargin {
+  margin: 0;
 }
 .smallText {
   font-size: 2.5vh;
@@ -105,7 +129,7 @@ body {
   width: 100%;
   align-items: center;
   margin-top: 2vh;
-  margin-bottom: 6vh;
+  margin-bottom: 1vh;
   justify-content: center;
 }
 .cardHeader {
@@ -118,16 +142,7 @@ body {
   color: white;
 }
 .hide {
-  visibility: collapse;
-}
-.hide::before {
-  visibility: visible;
-  width: 10vw;
-  height: 30vh;
-  border-radius: 2vh;
-  content: "";
-  background-color: black;
-  opacity: .6;
+  visibility: hidden;
 }
 .buttonClass {
   height: 8vh;

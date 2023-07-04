@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { getCookie, setCookie, getPlayerCookie, setPlayerCookie, updateCurrentPlayerCookie } from '../App';
+import ScoreComponent from './ScoreComponent';
 
 const MainMenu = ({setState}) => {
-  let enterToScoreboard = (username : string, amountOfCards : number, highscore : number) => {
-    let scoreboardEntry = `<tr id="scoreboardBody_${username}"><td><button onclick='document.getElementById("scoreboardBody_${username}").outerHTML = ""; document.cookie = "PLAYER_${username}=; Max-Age=-99999999;"'><b>X</b></button></td><td>${username}</td><td>${amountOfCards.toString()}</td><td>${highscore.toString()}</td></tr>`;
-    document.getElementById("scoreboardBody")!.innerHTML += scoreboardEntry;
+const [scoreBoardEntries, setScoreBoardEntries] = useState([])
+  const enterToScoreboard = (username : string, amountOfCards : number, highscore : number) => {
+    
   }
   let clearScoreboard = () => {
     document.getElementById("scoreboardBody")!.innerHTML = "<tr><th>___</th><th>USERNAME</th><th>CARDS</th><th>SCORE</th></tr>";
@@ -53,7 +54,7 @@ const MainMenu = ({setState}) => {
   return (
     <div className='reset'>
       <div className='mainOuter'>
-        <h1 className='titleFont largeText primaryColour'>CARD FLIPPER</h1>
+        <h1 className='titleFont largeText primaryColour'>BYTE FLIPPER</h1>
         <div className='formContainer'>
           <input type="text" className='secondaryColour mediumText' id="playernameBox" placeholder='Username...' />
           <button className='removeBorder secondaryColour mediumText buttonClass' onClick={() => play()}>PLAY</button>
@@ -63,16 +64,14 @@ const MainMenu = ({setState}) => {
               <button className='removeBorder secondaryColour smallText squareBtn buttonClick' onClick={() => {toggleButtons(current)}} id={`${current}-card`}>{current}</button>
             )}
           </div>
-          <div className='primaryColour' id='scoreboard'>
-            <table>
-              <tbody id="scoreboardBody">
-                <tr>
-                  <th>USERNAME</th>
-                  <th>CARDS</th>
-                  <th>SCORE</th>
-                </tr>
-              </tbody>
-            </table>
+          <div className='primaryColour scoreBoardContainer'  id='scoreboard'>
+            <h1 className='noMargin'>The Scores</h1>
+            <div className='scoreRow'>
+              <h1>Username</h1>
+              <h1 className='rightElementTwo'>Cards</h1>
+              <h1 className='rightElement'>Score</h1>
+            </div>
+            <ScoreComponent username={"hello0"} cards={"there"} score={12} />
           </div>
         </div>
       </div>

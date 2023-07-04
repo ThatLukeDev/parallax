@@ -31,8 +31,10 @@ function App() {
   const [menuEnabled, setMenuEnabled] = useState(true)
   return (
     <div>
-      { menuEnabled && < MainMenu setState={setMenuEnabled} /> }
-      { !menuEnabled && < Game gameOver={setMenuEnabled} /> }
+      <div className='overlap'>
+        { menuEnabled && < MainMenu setState={setMenuEnabled} /> }
+        { !menuEnabled && < Game gameOver={setMenuEnabled} /> }
+      </div>
     </div>
   )
 }
