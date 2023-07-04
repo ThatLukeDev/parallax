@@ -62,13 +62,21 @@ const Game = ({}) => {
       setPlayerCookie(getCookie("currentPlayer"), Number(getCookie("amountOfCards")), currentScore)
     }
     if (currentScore >= Number(getCookie("amountOfCards")) / 2) {
-      location.reload();
+      setTimeout(() => {
+        document.getElementById("winSound")!.play()
+        setTimeout(() => {
+          location.reload();
+        }, 2000);
+      }, 1000);
     }
   }, [currentScore])
   
 
   return (
     <div className='gameHolder'>
+        <audio id="winSound">
+          <source src="src/confetti.mp3" type="audio/mpeg" />
+        </audio>
       <div className='cardHolder'>
         {cards ? cards.map((card, key) => <Card cardFlipped={cardFlipped} cardClicked={cardClicked} contents={card} number={key} cardNumber={selectedCards}/>) : null}
       </div>

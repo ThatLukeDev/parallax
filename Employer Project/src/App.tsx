@@ -6,7 +6,13 @@ import MainMenu from './components/MainMenu'
 import Game from './components/Game'
 
 export let getCookie = (name : string) => {
-  return document.cookie.split(name + "=")[1].split("; ")[0];
+  let retval = null
+  try {
+    retval = document.cookie.split(name + "=")[1].split("; ")[0]
+  } catch {
+    retval = null;
+  }
+  return retval;
 }
 export let setCookie = (name : string, content : string) => {
   document.cookie = name + "=" + content;
