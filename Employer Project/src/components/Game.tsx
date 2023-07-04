@@ -5,6 +5,10 @@ const Game = () => {
   let cardsOnTable = [];
   let usedCards = [];
   const [cards, setCards] = useState<number[]>()
+  const [cardFlipped, setCardFlipped] = useState<number[]>()
+  var selectedCard:number;
+  var selectedKey:number;
+  const [cardFlippedNo, setCardFlippedNo] = useState([])
   useEffect(() => {
     let count = 0;
     for (let i = 0; i < 6; i++) {
@@ -24,18 +28,30 @@ const Game = () => {
         count += 2
       }
     }
-    console.log(usedCards)
     setCards(cardsOnTable)
-    console.log(cardsOnTable)
+    selectedCard = -1
+    selectedKey = -1
   }, [])
-  const cardClicked = (cardKey:number) => {
-    console.log(cardKey)
+  const cardClicked = (cardKey:number, key:number) => {
+    setCardFlippedNo(cardFlippedNo => [cardFlippedNo, key])
+    if (cardKey == selectedCard && cardFlippedNo.Length == 2) {
+      setCardFlipped([cardKey, false])
+      setCardFlippedNo([])
+      console.error("Winner")
+    }
+    else if (cardFlippedNo == 2) {
+      setCardFlippedNo([])
+      setCardFlipped(["universalNo", false])
+    }
+    selectedCard = cardKey;
+    selectedKey = key;
+    console.error(cardFlippedNo)
   }
 
 
   return (
     <div className='cardHolder'>
-        {cards ? cards.map((card, key) => <Card cardClicked={cardClicked} contents={card} number={key}/>) : null}
+        {cards ? cards.map((card, key) => <Card cardFlipped={cardFlipped} cardClicked={cardClicked} contents={card} number={key}/>) : null}
     </div>
   )
 }

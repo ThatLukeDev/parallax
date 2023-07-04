@@ -24,7 +24,7 @@ export let updateCurrentPlayerCookie = () => {
 function App() {
   return (
     <div>
-      <MainMenu />
+      <Game />
     </div>
   )
 }
