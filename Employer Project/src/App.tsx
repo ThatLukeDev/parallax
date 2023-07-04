@@ -19,7 +19,7 @@ export let getPlayerCookie = (username : string) => {
   return [cook[0], cook[1], cook[2]];
 }
 export let updateCurrentPlayerCookie = () => {
-  setPlayerCookie(getCookie("currentPlayer"), Number(getCookie("amountOfCards")), getCookie("highscore"))
+  setPlayerCookie(getCookie("currentPlayer"), Number(getCookie("amountOfCards")), Number(getCookie("highscore")))
 }
 function App() {
   return (
