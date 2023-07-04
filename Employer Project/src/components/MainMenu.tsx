@@ -14,6 +14,9 @@ const MainMenu = () => {
     let cook = getCookie(username).split(", ");
     return [cook[0], cook[1], cook[2]];
   }
+  let updateCurrentPlayerCookie = () => {
+    setPlayerCookie(getCookie("currentPlayer"), getCookie("amountOfCards"), getCookie("highscore"))
+  }
   let play = () => {
     setCookie("currentPlayer", document.getElementById("playernameBox")!.value);
     setCookie("highscore", "0");
