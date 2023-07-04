@@ -14,27 +14,11 @@ const Game = ({gameOver}) => {
   const [cardFlippedNo, setCardFlippedNo] = useState([])
   let useCardsAmount = 10;
   useEffect(() => {
-    /*
-    let count = 0
-    useCardsAmount = parseInt(getCookie("amountOfCards")) + 2
-    for (let i = 0; i < 9; i++) {
-      let randIndex = 0
-      let randIndexTwo = 0
-      do {
-        randIndex = Math.floor(Math.random() * (useCardsAmount - 1) ) + 1
-      }  while (usedCards.includes(randIndex))
-      do {
-        randIndexTwo = Math.floor(Math.random() * (useCardsAmount - 1) ) + 1
-      } while (usedCards.includes(randIndexTwo) && randIndex != randIndexTwo)
-      if (!usedCards.includes(randIndex) && !usedCards.includes(randIndexTwo) && randIndex != 0 && randIndexTwo != 0 && randIndex != randIndexTwo) {
-        cardsOnTable[randIndex] = i
-        cardsOnTable[randIndexTwo] = i
-        usedCards[count] = randIndex
-        usedCards[count + 1] = randIndexTwo
-        count += 2
-      }
-    }
-    */
+    genCards()
+  }, [])
+  
+  
+  const genCards = () => {
     let amountOfCards = parseInt(getCookie("amountOfCards")!);
     let tableCards = Array(amountOfCards).fill(-1);
     for (let i = 0; i < amountOfCards; i += 2) {
@@ -54,29 +38,27 @@ const Game = ({gameOver}) => {
     setCards(cardsOnTable);
     selectedCard = -1;
     selectedKey = -1;
+  }
 
-  }, [])
-  let arr = []
   const [currentScore, setCurrentScore] = useState(0)
   const cardClicked = (cardKey:number, key:number) => {
     if (key != selectedKey) {
-      arr.push(key)
-      // setSelectedCards(arr.length)
+      setSelectedCards(selectedCards + 1)
       if (cardKey == selectedCard) {
         setCardFlipped([cardKey, "delete"])
         setCurrentScore(currentScore + 1)
       }
-      else if (arr.length == 2) {
-        arr = []
-        // setSelectedCards(0)
+      if (selectedCards == 2) {
+        console.log("WHY IS THIS NOT EXCECUTING")
+        setSelectedCards(0)
         setCardFlipped(["universalNo", false])
         setTimeout(() => {
           setCardFlipped([])
-        }, 150)
+        }, 10)
       }
-      selectedCard = cardKey
-      selectedKey = key 
     }
+    selectedCard = cardKey
+    selectedKey = key
   }
   useEffect(() => {
     if (Number(getCookie("highscore")) < currentScore) {

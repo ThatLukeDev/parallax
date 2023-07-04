@@ -2,8 +2,11 @@ import React, { useEffect, useState } from 'react'
 
 const Card = ({cardFlipped, contents, cardClicked, number, cardNumber}) => {
   const [shown, setShown] = useState(false)
+
+  console.log(cardNumber)
+
   number = `idof${number}`
-  if (shown && cardNumber < 2) {
+  if (shown) {
     document.querySelector(`.${number}`)?.classList.add("flipCard")
   }
 
@@ -17,6 +20,7 @@ const Card = ({cardFlipped, contents, cardClicked, number, cardNumber}) => {
       }, 200)
     }, 1000)
   }
+  console.log(cardFlipped)
   if (cardFlipped != undefined && shown && cardFlipped[0] == contents && cardFlipped[1] == "delete") {
     setTimeout(() => {
       document.querySelector(`.${number}`)?.classList.add("hide")
@@ -34,13 +38,12 @@ const Card = ({cardFlipped, contents, cardClicked, number, cardNumber}) => {
     8: "<span>",
     9: "<dfm>"
   }
-  console.log(cardNumber)
   return (
     <div className={`cardOuter ${number} cardText`} onClick={() => {
       if (cardNumber < 2) {
         setShown(true);
+        cardClicked(contents, number)
       }
-      cardClicked(contents, number)
     }}>
       {shown ? <p className='textInCard'>{dict[contents]}</p> : <div></div>}
     </div>
