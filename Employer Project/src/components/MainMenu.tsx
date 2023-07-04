@@ -28,10 +28,10 @@ const MainMenu = ({setState}) => {
   }
   useEffect(() => {
     document.getElementById("cardSelections")!.innerHTML = "";
-    for (let i = 4; i < 21; i += 4) {
+    for (let i = 8; i < 25; i += 8) {
       document.getElementById("cardSelections")!.innerHTML += `<button class='removeBorder secondaryColour smallText squareBtn' onClick="document.cookie = 'amountOfCards=${i}'; document.getElementById('cardSelections')?.childNodes.forEach((x) => { if (x.innerText == '${i}') { x.classList.remove('primaryButtonColour'); } else { x.classList.add('primaryButtonColour'); }})">${i}</button>`;
     }
-    chooseAmount(4);
+    chooseAmount(8);
     clearScoreboard();
     document.cookie.split("; ").forEach((x) => {
       let name = x.split("=")[0];
