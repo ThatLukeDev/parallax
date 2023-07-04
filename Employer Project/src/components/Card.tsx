@@ -31,6 +31,10 @@ const Card = ({cardFlipped, contents, cardClicked, number, cardNumber}) => {
     3: "<div>",
     4: "<input>",
     5: "<form>",
+    6: "<script>",
+    7: "<style>",
+    8: "<span>",
+    9: "<dfm>"
   }
   return (
     <div className={`cardOuter ${number} cardText`} onClick={() => {

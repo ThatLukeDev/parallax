@@ -16,10 +16,10 @@ const Game = () => {
       let randIndex = 0
       let randIndexTwo = 0
       do {
-        randIndex = Math.floor(Math.random() * (10 - 1) ) + 1
+        randIndex = Math.floor(Math.random() * (14 - 1) ) + 1
       }  while (usedCards.includes(randIndex))
       do {
-        randIndexTwo = Math.floor(Math.random() * (10 - 1) ) + 1
+        randIndexTwo = Math.floor(Math.random() * (14 - 1) ) + 1
       } while (usedCards.includes(randIndexTwo) && randIndex != randIndexTwo)
       if (!usedCards.includes(randIndex) && !usedCards.includes(randIndexTwo) && randIndex != 0 && randIndexTwo != 0 && randIndex != randIndexTwo) {
         cardsOnTable[randIndex] = i
