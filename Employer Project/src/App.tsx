@@ -21,7 +21,7 @@ export let setPlayerCookie = (username : string, difficulty : number, highscore 
   setCookie("PLAYER_" + username.replace(/(, )|<.+?>/g,""), `${username}, ${difficulty.toString()}, ${highscore.toString()}`);
 }
 export let getPlayerCookie = (username : string) => {
-  let cook = getCookie("PLAYER_" + username.replace(/(, )|<.+?>/g,"")).split(", ");
+  let cook = getCookie("PLAYER_" + username.replace(/(, )|<.+?>/g,""))!.split(", ");
   return [cook[0], cook[1], cook[2]];
 }
 export let updateCurrentPlayerCookie = () => {

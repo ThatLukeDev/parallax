@@ -63,16 +63,8 @@ const Game = ({gameOver}) => {
     }
     if (currentScore >= Number(getCookie("amountOfCards")) / 2) {
       setTimeout(() => {
-<<<<<<< HEAD
-        document.getElementById("winSound")!.play()
-        setTimeout(() => {
-          location.reload();
-        }, 2000);
-      }, 1000);
-=======
         gameOver(true)
       }, 200);
->>>>>>> a2f987d5f797e343555aa2bb2e7bcfb9ef9c3a64
     }
   }, [currentScore])
   
