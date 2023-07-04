@@ -6,25 +6,31 @@ import MainMenu from './components/MainMenu'
 import Game from './components/Game'
 
 export let getCookie = (name : string) => {
-  return document.cookie.split(name + "=")[1].split(";")[0];
+  return document.cookie.split(name + "=")[1].split("; ")[0];
 }
 export let setCookie = (name : string, content : string) => {
   document.cookie = name + "=" + content;
 }
 export let setPlayerCookie = (username : string, difficulty : number, highscore : number) => {
-  setCookie(username, `${username}, ${difficulty.toString()}, ${highscore.toString()}`);
+  setCookie("PLAYER_" + username.replace(/(, )|<.+?>/g,""), `${username}, ${difficulty.toString()}, ${highscore.toString()}`);
 }
 export let getPlayerCookie = (username : string) => {
-  let cook = getCookie(username).split(", ");
+  let cook = getCookie("PLAYER_" + username.replace(/(, )|<.+?>/g,"")).split(", ");
   return [cook[0], cook[1], cook[2]];
 }
 export let updateCurrentPlayerCookie = () => {
-  setPlayerCookie(getCookie("currentPlayer"), Number(getCookie("amountOfCards")), getCookie("highscore"))
+  setPlayerCookie(getCookie("currentPlayer"), Number(getCookie("amountOfCards")), Number(getCookie("highscore")))
 }
 function App() {
+  const [menuEnabled, setMenuEnabled] = useState(true)
   return (
     <div>
+<<<<<<< HEAD
       <Game />
+=======
+      {menuEnabled && < MainMenu setState={setMenuEnabled} />}
+      {!menuEnabled && < Game />}
+>>>>>>> a5561a68b00671f1ea659d2029a30c80e578a3d6
     </div>
   )
 }

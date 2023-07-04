@@ -1,19 +1,19 @@
 import React, { useEffect, useState } from 'react'
 
-const Card = ({cardFlipped, contents, cardClicked, number}) => {
+const Card = ({cardFlipped, contents, cardClicked, number, cardNumber}) => {
   const [shown, setShown] = useState(false)
   number = `idof${number}`
-  if (shown) {
+  if (shown && cardNumber < 2) {
     document.querySelector(`.${number}`)?.classList.add("flipCard")
   }
-  console.log(cardFlipped)
   if (cardFlipped != undefined && cardFlipped[0] == contents && cardFlipped[1] == false && shown) {
     setTimeout(() => {
       document.querySelector(`.${number}`)?.classList.remove("flipCard")
       setShown(false)
     }, 1000)
   }
-  else if (cardFlipped != undefined && shown && cardFlipped[0] == "universalNo") {
+  console.log(cardFlipped) 
+  if (cardFlipped != undefined && shown && cardFlipped[0] == "universalNo" && cardNumber == 2) {
     setTimeout(() => {
       document.querySelector(`.${number}`)?.classList.remove("flipCard")
       setShown(false)
@@ -28,7 +28,11 @@ const Card = ({cardFlipped, contents, cardClicked, number}) => {
     5: "<form>",
   }
   return (
-    <div className={`cardOuter ${number} cardText`} onClick={() => {setShown(true); cardClicked(contents, number); console.log("hello world")}}>
+    <div className={`cardOuter ${number} cardText`} onClick={() => {
+      if (cardNumber < 2) {
+        setShown(true); 
+      }
+      cardClicked(contents, number); console.log("hello world")}}>
       {shown ? dict[contents] : <div></div>}
     </div>
   )
