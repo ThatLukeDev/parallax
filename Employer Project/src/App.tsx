@@ -26,7 +26,7 @@ function App() {
   return (
     <div>
       { menuEnabled && < MainMenu setState={setMenuEnabled} /> }
-      { !menuEnabled && < Game /> }
+      { !menuEnabled && < Game gameOver={setMenuEnabled} /> }
     </div>
   )
 }

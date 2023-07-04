@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Card from './Card'
 import { getCookie, setCookie, getPlayerCookie, setPlayerCookie, updateCurrentPlayerCookie } from '../App';
 
-const Game = ({}) => {
+const Game = ({gameOver}) => {
   let cardsOnTable = []
   let usedCards = []
   const [cards, setCards] = useState<number[]>()
@@ -62,7 +62,9 @@ const Game = ({}) => {
       setPlayerCookie(getCookie("currentPlayer"), Number(getCookie("amountOfCards")), currentScore)
     }
     if (currentScore >= Number(getCookie("amountOfCards")) / 2) {
-      location.reload();
+      setTimeout(() => {
+        gameOver(true)
+      }, 200);
     }
   }, [currentScore])
   
