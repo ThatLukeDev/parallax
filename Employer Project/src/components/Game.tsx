@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Card from './Card'
+import { getCookie, getPlayerCookie, setPlayerCookie } from '../App'
 
 const Game = () => {
   let cardsOnTable = []
@@ -10,16 +11,18 @@ const Game = () => {
   var selectedKey:number
   const [selectedCards, setSelectedCards] = useState(0)
   const [cardFlippedNo, setCardFlippedNo] = useState([])
+  let useCardsAmount = 10;
   useEffect(() => {
     let count = 0
+    useCardsAmount = parseInt(getCookie("amountOfCards")) + 2
     for (let i = 0; i < 5; i++) {
       let randIndex = 0
       let randIndexTwo = 0
       do {
-        randIndex = Math.floor(Math.random() * (10 - 1) ) + 1
+        randIndex = Math.floor(Math.random() * (useCardsAmount - 1) ) + 1
       }  while (usedCards.includes(randIndex))
       do {
-        randIndexTwo = Math.floor(Math.random() * (10 - 1) ) + 1
+        randIndexTwo = Math.floor(Math.random() * (useCardsAmount - 1) ) + 1
       } while (usedCards.includes(randIndexTwo) && randIndex != randIndexTwo)
       if (!usedCards.includes(randIndex) && !usedCards.includes(randIndexTwo) && randIndex != 0 && randIndexTwo != 0 && randIndex != randIndexTwo) {
         cardsOnTable[randIndex] = i
@@ -41,7 +44,10 @@ const Game = () => {
     console.log(arr.length)
     if (cardKey == selectedCard) {
       setCardFlipped([cardKey, "delete"])
-      setCurrentScore(currentScore + 1)
+      setCurrentScore(currentScore + 2)
+      if (Number(getCookie("highscore")) < currentScore) {
+        setPlayerCookie(getCookie("currentPlayer"), Number(getCookie("amountOfCards")), currentScore)
+      }
     }
     else if (arr.length == 2) {
       arr = []

@@ -51,7 +51,6 @@ const MainMenu = ({setState}) => {
           <button className='removeBorder secondaryColour mediumText' onClick={() => play()}>PLAY</button>
         </div>
         <div id="cardSelections">
-          <button className='removeBorder secondaryColour smallText squareBtn' onClick={() => chooseAmount(1)}>4</button>
         </div>
       </div>
       <div className='primaryColour' id='scoreboard'>
