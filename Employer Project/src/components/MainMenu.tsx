@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { getCookie, setCookie, getPlayerCookie, setPlayerCookie, updateCurrentPlayerCookie } from '../App';
 
 const MainMenu = ({setState}) => {

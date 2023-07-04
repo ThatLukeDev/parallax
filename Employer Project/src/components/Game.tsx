@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import Card from './Card'
-import { getCookie, getPlayerCookie, setPlayerCookie } from '../App'
+import { getCookie, setCookie, getPlayerCookie, setPlayerCookie, updateCurrentPlayerCookie } from '../App';
 
-const Game = () => {
+const Game = ({}) => {
   let cardsOnTable = []
   let usedCards = []
   const [cards, setCards] = useState<number[]>()
@@ -40,24 +40,29 @@ const Game = () => {
   let arr = []
   const [currentScore, setCurrentScore] = useState(0)
   const cardClicked = (cardKey:number, key:number) => {
-    arr.push(key)
-    if (cardKey == selectedCard) {
-      setCardFlipped([cardKey, "delete"])
-      setCurrentScore(currentScore + 1)
+    if (key != selectedKey) {
+      arr.push(key)
+      if (cardKey == selectedCard) {
+        setCardFlipped([cardKey, "delete"])
+        setCurrentScore(currentScore + 1)
+      }
+      else if (arr.length == 2) {
+        arr = []
+        setCardFlipped(["universalNo", false])
+        setTimeout(() => {
+          setCardFlipped([])
+        }, 150)
+      }
+      selectedCard = cardKey
+      selectedKey = key 
     }
-    else if (arr.length == 2) {
-      arr = []
-      setCardFlipped(["universalNo", false])
-      setTimeout(() => {
-        setCardFlipped([])
-      }, 150)
-    }
-    selectedCard = cardKey
-    selectedKey = key 
   }
   useEffect(() => {
     if (Number(getCookie("highscore")) < currentScore) {
       setPlayerCookie(getCookie("currentPlayer"), Number(getCookie("amountOfCards")), currentScore)
+    }
+    if (currentScore >= Number(getCookie("amountOfCards")) / 2) {
+      location.reload();
     }
   }, [currentScore])
   
