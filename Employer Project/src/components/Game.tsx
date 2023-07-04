@@ -64,7 +64,7 @@ const Game = ({gameOver}) => {
     if (currentScore >= Number(getCookie("amountOfCards")) / 2) {
       setTimeout(() => {
         gameOver(true)
-      }, 200);
+      }, 400);
     }
   }, [currentScore])
   
