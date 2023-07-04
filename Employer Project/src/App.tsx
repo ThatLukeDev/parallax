@@ -22,9 +22,11 @@ export let updateCurrentPlayerCookie = () => {
   setPlayerCookie(getCookie("currentPlayer"), Number(getCookie("amountOfCards")), Number(getCookie("highscore")))
 }
 function App() {
+  let menuEnabled = true;
   return (
     <div>
-      <MainMenu />
+      {menuEnabled && < MainMenu />}
+      {!menuEnabled && < Game />}
     </div>
   )
 }

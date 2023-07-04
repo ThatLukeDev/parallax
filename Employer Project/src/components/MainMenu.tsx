@@ -7,10 +7,10 @@ const MainMenu = () => {
     document.getElementById("scoreboardBody")!.innerHTML += scoreboardEntry;
   }
   let clearScoreboard = () => {
-    document.getElementById("scoreboardBody")!.innerHTML = "<tr><th></th><th>USERNAME</th><th>CARDS</th><th>SCORE</th></tr>";
+    document.getElementById("scoreboardBody")!.innerHTML = "<tr><th>___</th><th>USERNAME</th><th>CARDS</th><th>SCORE</th></tr>";
   }
   let play = () => {
-    setCookie("currentPlayer", document.getElementById("playernameBox")!.value.replace(/(, )|<.+?>/g,""));
+    setCookie("currentPlayer", document.getElementById("playernameBox")!.value.replace(/(, )|<.+?>/g,"").substring(0,10));
     setCookie("highscore", "0");
     setPlayerCookie(getCookie("currentPlayer"), Number(getCookie("amountOfCards")), Number(getCookie("highscore")));
   }
