@@ -40,6 +40,16 @@ const MainMenu = ({setState}) => {
       }
     })
   }, [])
+  let switchButton = (button : number) => {
+    document.cookie = 'amountOfCards='+button.toString();
+    document.getElementById('cardSelections')?.childNodes.forEach((x) => {
+      if (x.innerText == button.toString()) {
+        x.classList.remove('primaryButtonColour');
+      } else {
+        x.classList.add('primaryButtonColour');
+      }
+    })
+  }
   
   return (
     <div>
@@ -50,7 +60,9 @@ const MainMenu = ({setState}) => {
           <button className='removeBorder secondaryColour mediumText' onClick={() => play()}>PLAY</button>
         </div>
         <div id="cardSelections">
-          <button class='removeBorder secondaryColour smallText squareBtn' onClick="document.cookie = 'amountOfCards=${i}'; document.getElementById('cardSelections')?.childNodes.forEach((x) => { if (x.innerText == '${i}') { x.classList.remove('primaryButtonColour'); } else { x.classList.add('primaryButtonColour'); }})">${i}</button>
+          <button className='removeBorder secondaryColour smallText squareBtn' onClick={() => switchButton(8)}>8</button>
+          <button className='removeBorder secondaryColour smallText squareBtn' onClick={() => switchButton(16)}>16</button>
+          <button className='removeBorder secondaryColour smallText squareBtn' onClick={() => switchButton(24)}>24</button>
         </div>
       </div>
       <div className='primaryColour' id='scoreboard'>

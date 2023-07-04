@@ -40,7 +40,7 @@ const Game = ({gameOver}) => {
   let arr = []
   const [currentScore, setCurrentScore] = useState(0)
   const cardClicked = (cardKey:number, key:number) => {
-    if (key != selectedKey) {
+    if (key != selectedKey && arr.length < 2) {
       arr.push(key)
       // setSelectedCards(arr.length)
       if (cardKey == selectedCard) {
@@ -66,7 +66,7 @@ const Game = ({gameOver}) => {
     if (currentScore >= Number(getCookie("amountOfCards")) / 2) {
       setTimeout(() => {
         gameOver(true)
-      }, 400);
+      }, 2000);
     }
   }, [currentScore])
   
