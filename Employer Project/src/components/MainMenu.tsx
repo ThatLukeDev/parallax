@@ -19,18 +19,10 @@ const [scoreBoardEntries, setScoreBoardEntries] = useState([])
     setPlayerCookie(getCookie("currentPlayer")!, Number(getCookie("amountOfCards")), Number(getCookie("highscore")));
     setState(false);
   }
-  let chooseAmount = (amount : number) => {
-    setCookie("amountOfCards", amount.toString());
-    document.getElementById("cardSelections")?.childNodes.forEach((x) => {
-      if (x.innerText == amount.toString()) {
-        x.classList.remove("primaryButtonColour");
-      }
-      else {
-        x.classList.add("primaryButtonColour");
-      }
-    })
-  }
+  // let chooseAmount = (amount : number) => {
+  // }
   const toggleButtons = (cardNo:number) => {
+    setCookie("amountOfCards", cardNo.toString());
     // document.cookie = cardNo;
     document.querySelectorAll(".squareBtn").forEach((button) => {
       button.classList.remove("selected")
@@ -38,16 +30,21 @@ const [scoreBoardEntries, setScoreBoardEntries] = useState([])
     document.getElementById(`${cardNo}-card`)?.classList.add("selected")
     console.log(cardNo)
   }
+  const [scoreBoard, setScoreBoard] = useState()
   useEffect(() => {
     toggleButtons(16)
     // clearScoreboard();
-    // document.cookie.split("; ").forEach((currentCookie) => {
-    //   let name = currentCookie.split("=")[0];
-    //   let content = currentCookie.split("=")[1].split(", ");
-    //   if (name.substring(0,7) == "PLAYER_") {
-    //     enterToScoreboard(content[0], Number(content[1]), Number(content[2]))
-    //   }
-    // })
+    let count = 0;
+    let scoreArray = []
+    document.cookie.split("; ").forEach((currentCookie) => {
+      let name = currentCookie.split("=")[0];
+      let content = currentCookie.split("=")[1].split(", ");
+      if (name.substring(0,7) == "PLAYER_") {
+        scoreArray[count] = {userName: name.substring(7, name.length), cardNumber: content[1], score: content[2]}
+        count++
+      }
+    })
+    setScoreBoard(scoreArray)
   }, [])
   const buttonsArray = [8, 16, 24]
 
@@ -71,7 +68,7 @@ const [scoreBoardEntries, setScoreBoardEntries] = useState([])
               <h1 className='rightElementTwo'>Cards</h1>
               <h1 className='rightElement'>Score</h1>
             </div>
-            <ScoreComponent username={"hello0"} cards={"there"} score={12} />
+            {scoreBoard ? scoreBoard!.map((row) => <ScoreComponent username={row.userName} cards={row.cardNumber} score={row.score} />) : null}
           </div>
         </div>
       </div>
