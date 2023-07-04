@@ -19,7 +19,7 @@ const Card = ({contents, cardClicked, number}) => {
     5: "<form>",
   }
   return (
-    <div className={`cardOuter ${number}`} onClick={() => {setShown(true); cardClicked(contents); console.log("hello world")}}>
+    <div className={`cardOuter ${number} cardText`} onClick={() => {setShown(true); cardClicked(contents); console.log("hello world")}}>
       {shown ? dict[contents] : <div></div>}
     </div>
   )

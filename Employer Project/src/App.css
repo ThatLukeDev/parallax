@@ -61,12 +61,13 @@ body {
     background-color: #050505;
 }
 .cardOuter {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: white;
-    width: 24vw;
-    height: 60vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  width: 24vw;
+  height: 60vh;
+  border-radius: 8vh;
 }
 .cardHolder {
     display: grid;
@@ -84,4 +85,7 @@ body {
     0% {transform: scaleX(100%);}
     50% {transform: scaleX(0%);}
     100% {transform: scaleX(100%);}
+}
+.cardText {
+  font-size: 15vh;
 }
