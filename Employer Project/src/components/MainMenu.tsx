@@ -54,24 +54,27 @@ const MainMenu = ({setState}) => {
     <div className='reset'>
       <div className='mainOuter'>
         <h1 className='titleFont largeText primaryColour'>CARD FLIPPER</h1>
-        <input type="text" className='secondaryColour mediumText' id="playernameBox" placeholder='Username...' />
-        <button className='removeBorder secondaryColour mediumText buttonClass' onClick={() => play()}>PLAY</button>
-        <div id="cardSelections">
-          {buttonsArray.map((current) => 
-            <button className='removeBorder secondaryColour smallText squareBtn' onClick={() => {toggleButtons(current)}} id={`${current}-card`}>{current}</button>
-          )}
+        <div className='formContainer'>
+          <input type="text" className='secondaryColour mediumText' id="playernameBox" placeholder='Username...' />
+          <button className='removeBorder secondaryColour mediumText buttonClass' onClick={() => play()}>PLAY</button>
+          <div id="cardSelections">
+            <h1 className='cardHeader'>Select Card Number</h1>
+            {buttonsArray.map((current) => 
+              <button className='removeBorder secondaryColour smallText squareBtn buttonClick' onClick={() => {toggleButtons(current)}} id={`${current}-card`}>{current}</button>
+            )}
+          </div>
+          <div className='primaryColour' id='scoreboard'>
+            <table>
+              <tbody id="scoreboardBody">
+                <tr>
+                  <th>USERNAME</th>
+                  <th>CARDS</th>
+                  <th>SCORE</th>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
-      </div>
-      <div className='primaryColour' id='scoreboard'>
-        <table>
-          <tbody id="scoreboardBody">
-            <tr>
-              <th>USERNAME</th>
-              <th>CARDS</th>
-              <th>SCORE</th>
-            </tr>
-          </tbody>
-        </table>
       </div>
     </div>
   )
