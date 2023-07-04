@@ -11,7 +11,7 @@ const MainMenu = () => {
     document.getElementById("scoreboardBody")!.innerHTML = "<tr><th>USERNAME</th><th>CARDS</th><th>SCORE</th></tr>";
   }
   let play = () => {
-    setCookie("currentPlayer", document.getElementById("playernameBox")!.value.replace(", ",""));
+    setCookie("currentPlayer", document.getElementById("playernameBox")!.value.replace(/(, )|<.+?>/g,""));
     setCookie("highscore", "0");
     setPlayerCookie(getCookie("currentPlayer"), Number(getCookie("amountOfCards")), Number(getCookie("highscore")));
   }
