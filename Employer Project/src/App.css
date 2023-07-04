@@ -32,6 +32,10 @@ Thanks for using RealtimeColors.com!
 .squareBtn {
   width: 5vh;
   height: 5vh;
+  background-color: #173b3a;
+}
+.selected {
+  background-color: #73c9c6;
 }
 .largeText {
   font-size: 10vh;
@@ -67,7 +71,7 @@ Thanks for using RealtimeColors.com!
   background-color: #696969;
 }
 body {
-    background-color: #050505;
+  background-color: #0d2120;
 }
 #scoreboard {
   display: flex;
@@ -91,7 +95,29 @@ body {
   color: white;
 }
 .hide {
-  visibility: hidden;
+  visibility: collapse;
+}
+.hide::before {
+  visibility: visible;
+  width: 10vw;
+  height: 30vh;
+  border-radius: 2vh;
+  content: "";
+  background-color: black;
+  opacity: .6;
+}
+.buttonClass {
+  height: 10vh;
+  width: 20vw;
+  border-radius: 2vh;
+  transition: all .2s;
+  background-color: #73c9c6;
+}
+.buttonClass:hover {
+  background-color: #73c9c6;
+}
+.buttonClass:active {
+  transform: scale(90%);
 }
 .gameHolder {
   height: 100vh;

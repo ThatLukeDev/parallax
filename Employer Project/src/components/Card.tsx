@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 const Card = ({cardFlipped, contents, cardClicked, number, cardNumber}) => {
   const [shown, setShown] = useState(false)
   number = `idof${number}`
-  if (shown && cardNumber < 2) {
+  if (shown) {
     document.querySelector(`.${number}`)?.classList.add("flipCard")
   }
 
@@ -22,7 +22,7 @@ const Card = ({cardFlipped, contents, cardClicked, number, cardNumber}) => {
       document.querySelector(`.${number}`)?.classList.add("hide")
     }, 1000)
   }
-  var dict = {
+  const dict = {
     0: "<>",
     1: "<p>",
     2: "<h1>",
@@ -34,12 +34,14 @@ const Card = ({cardFlipped, contents, cardClicked, number, cardNumber}) => {
     8: "<span>",
     9: "<dfm>"
   }
+  console.log(cardNumber)
   return (
     <div className={`cardOuter ${number} cardText`} onClick={() => {
       if (cardNumber < 2) {
         setShown(true);
       }
-      cardClicked(contents, number)}}>
+      cardClicked(contents, number)
+    }}>
       {shown ? <p className='textInCard'>{dict[contents]}</p> : <div></div>}
     </div>
   )

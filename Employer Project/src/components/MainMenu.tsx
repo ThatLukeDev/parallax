@@ -29,31 +29,37 @@ const MainMenu = ({setState}) => {
       }
     })
   }
-  useEffect(() => {
-    document.getElementById("cardSelections")!.innerHTML = "";
-    for (let i = 8; i < 25; i += 8) {
-      document.getElementById("cardSelections")!.innerHTML += `<button class='removeBorder secondaryColour smallText squareBtn' onClick="document.cookie = 'amountOfCards=${i}'; document.getElementById('cardSelections')?.childNodes.forEach((x) => { if (x.innerText == '${i}') { x.classList.remove('primaryButtonColour'); } else { x.classList.add('primaryButtonColour'); }})">${i}</button>`;
-    }
-    chooseAmount(8);
-    clearScoreboard();
-    document.cookie.split("; ").forEach((x) => {
-      let name = x.split("=")[0];
-      let content = x.split("=")[1].split(", ");
-      if (name.substring(0,7) == "PLAYER_") {
-        enterToScoreboard(content[0], Number(content[1]), Number(content[2]))
-      }
+  const toggleButtons = (cardNo:number) => {
+    // document.cookie = cardNo;
+    document.querySelectorAll(".squareBtn").forEach((button) => {
+      button.classList.remove("selected")
     })
+    document.getElementById(`${cardNo}-card`)?.classList.add("selected")
+    console.log(cardNo)
+  }
+  useEffect(() => {
+    toggleButtons(16)
+    // clearScoreboard();
+    // document.cookie.split("; ").forEach((currentCookie) => {
+    //   let name = currentCookie.split("=")[0];
+    //   let content = currentCookie.split("=")[1].split(", ");
+    //   if (name.substring(0,7) == "PLAYER_") {
+    //     enterToScoreboard(content[0], Number(content[1]), Number(content[2]))
+    //   }
+    // })
   }, [])
-  
+  const buttonsArray = [8, 16, 24]
+
   return (
-    <div>
+    <div className='reset'>
       <div className='mainOuter'>
         <h1 className='titleFont largeText primaryColour'>CARD FLIPPER</h1>
-        <div>
-          <input type="text" className='secondaryColour mediumText' id="playernameBox" placeholder='Username...' />
-          <button className='removeBorder secondaryColour mediumText' onClick={() => play()}>PLAY</button>
-        </div>
+        <input type="text" className='secondaryColour mediumText' id="playernameBox" placeholder='Username...' />
+        <button className='removeBorder secondaryColour mediumText buttonClass' onClick={() => play()}>PLAY</button>
         <div id="cardSelections">
+          {buttonsArray.map((current) => 
+            <button className='removeBorder secondaryColour smallText squareBtn' onClick={() => {toggleButtons(current)}} id={`${current}-card`}>{current}</button>
+          )}
         </div>
       </div>
       <div className='primaryColour' id='scoreboard'>
