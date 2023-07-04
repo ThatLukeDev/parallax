@@ -22,10 +22,10 @@ export let updateCurrentPlayerCookie = () => {
   setPlayerCookie(getCookie("currentPlayer"), Number(getCookie("amountOfCards")), Number(getCookie("highscore")))
 }
 function App() {
-  let menuEnabled = true;
+  const [menuEnabled, setMenuEnabled] = useState(true)
   return (
     <div>
-      {menuEnabled && < MainMenu />}
+      {menuEnabled && < MainMenu setState={setMenuEnabled} />}
       {!menuEnabled && < Game />}
     </div>
   )
