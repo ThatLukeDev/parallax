@@ -25,7 +25,8 @@ function App() {
   const [menuEnabled, setMenuEnabled] = useState(true)
   return (
     <div>
-      <Game />
+      {menuEnabled && < MainMenu setState={setMenuEnabled} />}
+      {!menuEnabled && < Game />}
     </div>
   )
 }
