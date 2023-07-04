@@ -27,7 +27,6 @@ function App() {
     <div>
       {menuEnabled && < MainMenu setState={setMenuEnabled} />}
       {!menuEnabled && < Game />}
-      {/* <Game /> */}
     </div>
   )
 }
