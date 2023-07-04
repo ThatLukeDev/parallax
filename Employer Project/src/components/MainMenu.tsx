@@ -3,12 +3,11 @@ import { getCookie, setCookie, getPlayerCookie, setPlayerCookie, updateCurrentPl
 
 const MainMenu = () => {
   let enterToScoreboard = (username : string, amountOfCards : number, highscore : number) => {
-    let scoreboardEntry = `<tr><td>${username}</td><td>${amountOfCards.toString()}</td><td>${highscore.toString()}</td></tr>`;
+    let scoreboardEntry = `<tr id="scoreboardBody_${username}"><td><button onclick='document.getElementById("scoreboardBody_${username}").outerHTML = ""; document.cookie = "PLAYER_${username}=; Max-Age=-99999999;"'><b>X</b></button></td><td>${username}</td><td>${amountOfCards.toString()}</td><td>${highscore.toString()}</td></tr>`;
     document.getElementById("scoreboardBody")!.innerHTML += scoreboardEntry;
-    console.log(document.getElementById("scoreboardBody")!.innerHTML);
   }
   let clearScoreboard = () => {
-    document.getElementById("scoreboardBody")!.innerHTML = "<tr><th>USERNAME</th><th>CARDS</th><th>SCORE</th></tr>";
+    document.getElementById("scoreboardBody")!.innerHTML = "<tr><th></th><th>USERNAME</th><th>CARDS</th><th>SCORE</th></tr>";
   }
   let play = () => {
     setCookie("currentPlayer", document.getElementById("playernameBox")!.value.replace(/(, )|<.+?>/g,""));
