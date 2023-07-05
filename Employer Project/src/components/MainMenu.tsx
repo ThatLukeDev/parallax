@@ -53,7 +53,7 @@ const [scoreBoardEntries, setScoreBoardEntries] = useState([])
       let name = currentCookie.split("=")[0];
       let content = currentCookie.split("=")[1].split(", ");
       if (name.substring(0,7) == "PLAYER_") {
-        scoreArray[count] = {userName: name.substring(7, name.length), cardNumber: content[1], score: content[2]}
+        scoreArray[count] = {userName: name.substring(7, name.length), cardNumber: `${content[4]}s-${content[3]}`, score: `${content[2]}/${content[1]}`}
         count++
       }
     })
@@ -88,8 +88,8 @@ const [scoreBoardEntries, setScoreBoardEntries] = useState([])
           <div className='primaryColour scoreBoardContainer'  id='scoreboard'>
             <div className='scoreRow'>
               <h1></h1>
-              <h1>Username</h1>
-              <h1 className='rightElementTwo'>Cards</h1>
+              <h1>Name</h1>
+              <h1 className='rightElementTwo'>Time-Turns</h1>
               <h1 className='rightElement'>Score</h1>
             </div>
             {scoreBoard ? scoreBoard!.map((row) => <ScoreComponent username={row.userName} cards={row.cardNumber} score={row.score} />) : null}

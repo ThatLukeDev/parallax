@@ -23,6 +23,7 @@ const Game = ({gameOver}) => {
     setInterval(() => {
       timekeeper += 1;
       setCookie("timer", timekeeper.toString())
+      setPlayerCookie(getCookie("currentPlayer")!, Number(getCookie("amountOfCards")), currentScore, turns, timekeeper)
     }, 1000);
   }, [])
   
