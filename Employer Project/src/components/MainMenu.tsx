@@ -27,7 +27,7 @@ const [scoreBoardEntries, setScoreBoardEntries] = useState([])
     document.querySelectorAll(".squareBtn").forEach((button) => {
       button.classList.remove("selected")
     })
-    document.getElementById(`${cardNo}-card`)?.classList.add("selected")
+    document.getElementById(`card${cardNo}`)?.classList.add("selected")
     console.log(cardNo)
   }
   const [scoreBoard, setScoreBoard] = useState()
@@ -58,7 +58,7 @@ const [scoreBoardEntries, setScoreBoardEntries] = useState([])
           <div id="cardSelections">
             <h1 className='cardHeader'>Select Card Number</h1>
             {buttonsArray.map((current) => 
-              <button className='removeBorder secondaryColour smallText squareBtn buttonClick' onClick={() => {toggleButtons(current)}} id={`${current}-card`}>{current}</button>
+              <button className='removeBorder secondaryColour smallText squareBtn buttonClick' onClick={() => {toggleButtons(current)}} id={`card${current}`}>{current}</button>
             )}
           </div>
           <h1 className='noMargin primaryColour'>Scoreboard</h1>

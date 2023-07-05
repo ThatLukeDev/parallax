@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { getCookie, setCookie, getPlayerCookie, setPlayerCookie, updateCurrentPlayerCookie } from '../App';
 
 const Card = ({cardFlipped, contents, cardClicked, number, cardNumber}) => {
   const [shown, setShown] = useState(false)
@@ -42,7 +43,7 @@ const Card = ({cardFlipped, contents, cardClicked, number, cardNumber}) => {
   }
   return (
     <div className={`cardOuter ${number} cardText`} onClick={() => {
-      if (cardNumber < 2) {
+      if (getCookie("allowFlipCards") == "1") {
         setShown(true);
         cardClicked(contents, number)
       }
