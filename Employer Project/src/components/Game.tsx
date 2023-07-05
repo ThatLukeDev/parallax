@@ -3,7 +3,7 @@ import Card from './Card'
 import { getCookie, setCookie, getPlayerCookie, setPlayerCookie, updateCurrentPlayerCookie } from '../App';
 
 const Game = ({gameOver}) => {
-  const distinctCards = 10;
+  const distinctCards = 12;
   let cardsOnTable = []
   let usedCards = []
   const [cards, setCards] = useState<number[]>()
@@ -41,25 +41,35 @@ const Game = ({gameOver}) => {
   }
 
   const [currentScore, setCurrentScore] = useState(0)
+  let countTwo = 0
   const cardClicked = (cardKey:number, key:number) => {
     if (key != selectedKey) {
-      setSelectedCards(selectedCards + 1)
+      countTwo++
       if (cardKey == selectedCard) {
         setCardFlipped([cardKey, "delete"])
         setCurrentScore(currentScore + 1)
       }
-      if (selectedCards == 2) {
+      // console.log("WHY IS THIS NOT EXCECUTING")
+      // console.error(countTwo)
+      else if (countTwo == 2) {
+        countTwo = 0
         console.log("WHY IS THIS NOT EXCECUTING")
-        setSelectedCards(0)
         setCardFlipped(["universalNo", false])
+        
         setTimeout(() => {
           setCardFlipped([])
-        }, 10)
+        }, 150)
+        setSelectedCards(0)
       }
     }
+    // increment()
     selectedCard = cardKey
     selectedKey = key
   }
+  const increment = () => {
+    setSelectedCards(selectedCards + 1)
+  }
+  console.log(cardFlipped)
   useEffect(() => {
     if (Number(getCookie("highscore")) < currentScore) {
       setPlayerCookie(getCookie("currentPlayer"), Number(getCookie("amountOfCards")), currentScore)
@@ -74,9 +84,9 @@ const Game = ({gameOver}) => {
 
   return (
     <div className='gameHolder'>
-        <audio id="winSound">
+        {/* <audio id="winSound">
           <source src="src/confetti.mp3" type="audio/mpeg" />
-        </audio>
+        </audio> */}
       <div className='cardHolder'>
         {cards ? cards.map((card, key) => <Card cardFlipped={cardFlipped} cardClicked={cardClicked} contents={card} number={key} cardNumber={selectedCards}/>) : null}
       </div>

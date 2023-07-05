@@ -24,6 +24,7 @@ Thanks for using RealtimeColors.com!
   display: flex;
   width: 100%;
   height: 6vh;
+  font-size: 1.4vh;
   position: relative;
 }
 .rightElement {

@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 const Card = ({cardFlipped, contents, cardClicked, number, cardNumber}) => {
   const [shown, setShown] = useState(false)
 
-  console.log(cardNumber)
+  // console.log(cardNumber)
 
   number = `idof${number}`
   if (shown) {
@@ -20,7 +20,7 @@ const Card = ({cardFlipped, contents, cardClicked, number, cardNumber}) => {
       }, 200)
     }, 1000)
   }
-  console.log(cardFlipped)
+  // console.log(cardFlipped)
   if (cardFlipped != undefined && shown && cardFlipped[0] == contents && cardFlipped[1] == "delete") {
     setTimeout(() => {
       document.querySelector(`.${number}`)?.classList.add("hide")
@@ -36,7 +36,9 @@ const Card = ({cardFlipped, contents, cardClicked, number, cardNumber}) => {
     6: "<script>",
     7: "<style>",
     8: "<span>",
-    9: "<dfm>"
+    9: "<dfm>",
+    10: "<br>",
+    11: "<a>",
   }
   return (
     <div className={`cardOuter ${number} cardText`} onClick={() => {
