@@ -50,7 +50,7 @@ const [scoreBoardEntries, setScoreBoardEntries] = useState([])
 
   return (
     <div className='reset'>
-      <div className='mainOuter'>
+      <div className='mainOuter smallText'>
         <h1 className='titleFont largeText primaryColour'>BYTE FLIPPER</h1>
         <div className='formContainer'>
           <input type="text" className='secondaryColour mediumText' id="playernameBox" placeholder='Username...' />
