@@ -65,6 +65,8 @@ const Game = ({gameOver}) => {
       if (cardKey == selectedCard) {
         setCardFlipped([cardKey, "delete"])
         setCurrentScore(currentScore + 1)
+        countTwo = 0
+        setCookie("allowFlipCards", "1")
       }
       // console.log("WHY IS THIS NOT EXCECUTING")
       else if (countTwo == 2) {
