@@ -58,14 +58,10 @@ const Game = ({gameOver}) => {
   console.log(countTwo)
   const cardClicked = (cardKey:number, key:number) => {
     if (key != selectedKey) {
-<<<<<<< HEAD
-      increment(1)
-=======
       countTwo++
       if (countTwo == 2) {
         setCookie("allowFlipCards", "0")
       }
->>>>>>> e16fe001cfad8d485511ef6afae41ea2be8bd033
       if (cardKey == selectedCard) {
         setCardFlipped([cardKey, "delete"])
         setCurrentScore(currentScore + 1)
