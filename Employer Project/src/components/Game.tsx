@@ -15,6 +15,7 @@ const Game = ({gameOver}) => {
   let useCardsAmount = 10;
   useEffect(() => {
     genCards()
+    setCookie("allowFlipCards", "1");
   }, [])
   
   
@@ -49,19 +50,23 @@ const Game = ({gameOver}) => {
   const cardClicked = (cardKey:number, key:number) => {
     if (key != selectedKey) {
       countTwo++
+      if (countTwo == 2) {
+        setCookie("allowFlipCards", "0")
+      }
       if (cardKey == selectedCard) {
         setCardFlipped([cardKey, "delete"])
         setCurrentScore(currentScore + 1)
       }
       // console.log("WHY IS THIS NOT EXCECUTING")
-      // console.error(countTwo)
       else if (countTwo == 2) {
-        countTwo = 0
-        console.log("WHY IS THIS NOT EXCECUTING")
         setCardFlipped(["universalNo", false])
         
         setTimeout(() => {
           setCardFlipped([])
+          setTimeout(() => {
+            countTwo = 0
+            setCookie("allowFlipCards", "1")
+          }, 1000);
         }, 150)
         setSelectedCards(0)
       }
