@@ -46,13 +46,26 @@ const Game = ({gameOver}) => {
   }
 
   const [currentScore, setCurrentScore] = useState(0)
-  let countTwo = 0
+  var countTwo = 0
+  const increment = (number:number) => {
+    if (number != 0) {
+      countTwo++
+    }
+    else {
+      countTwo = 0
+    }
+  }
+  console.log(countTwo)
   const cardClicked = (cardKey:number, key:number) => {
     if (key != selectedKey) {
+<<<<<<< HEAD
+      increment(1)
+=======
       countTwo++
       if (countTwo == 2) {
         setCookie("allowFlipCards", "0")
       }
+>>>>>>> e16fe001cfad8d485511ef6afae41ea2be8bd033
       if (cardKey == selectedCard) {
         setCardFlipped([cardKey, "delete"])
         setCurrentScore(currentScore + 1)
@@ -71,13 +84,14 @@ const Game = ({gameOver}) => {
         setSelectedCards(0)
       }
     }
-    // increment()
     selectedCard = cardKey
     selectedKey = key
+    // increment()
   }
-  const increment = () => {
-    setSelectedCards(selectedCards + 1)
-  }
+  console.log(countTwo)
+  useEffect(() => {
+    setSelectedCards(countTwo)
+  }, [countTwo])
   console.log(cardFlipped)
   useEffect(() => {
     if (Number(getCookie("highscore")) < currentScore) {

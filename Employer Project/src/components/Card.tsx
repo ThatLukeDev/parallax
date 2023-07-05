@@ -18,7 +18,7 @@ const Card = ({cardFlipped, contents, cardClicked, number, cardNumber}) => {
       setTimeout(() => {
         setShown(false)
         document.querySelector(`.${number}`)?.classList.remove("flipBack")
-      }, 200)
+      }, 225)
     }, 1000)
   }
   // console.log(cardFlipped)
