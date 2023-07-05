@@ -225,12 +225,11 @@ button:active {
 
 .flipCard {
   animation-name: cardFlip;
-  animation-duration: 200ms;
+  animation-duration: 450ms;
 }
 @keyframes cardFlip {
-  0% {transform: scaleX(100%);}
-  50% {transform: scaleX(0%);}
-  100% {transform: scaleX(100%);}
+  0% {transform: rotateY(0deg);}
+  100% {transform: rotateY(180deg);}
 }
 .cardText {
   font-size: 4vh;
@@ -240,10 +239,9 @@ button:active {
 }
 .flipBack {
   animation-name: flipBackCardAnimation;
-  animation-duration: 300ms;
+  animation-duration: 450ms;
 }
 @keyframes flipBackCardAnimation {
-  0% {transform: scaleX(100%);}
-  50% {transform: scaleX(0%);}
-  100% {transform: scaleX(100%);}
+  0% {transform: rotateY(0deg);}
+  100% {transform: rotateY(180deg);}
 }
