@@ -13,6 +13,70 @@ Thanks for using RealtimeColors.com!
 */
 @import url('https://fonts.googleapis.com/css2?family=Passion+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Space+Mono&display=swap');
+
+@media screen and (orientation: landscape) {
+  .rotate {
+    width: 0px;
+    height: 0px;
+    transform: translateX(-100%);
+  }
+  .largeText {
+    font-size: 20vh;
+    letter-spacing: 5px;
+    margin-bottom: 2vh;
+    margin-top: 4vh;
+  }
+  .mainOuter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 50vh;
+    margin-top: 20vh;
+  }
+}
+
+@media screen and (orientation: portrait) {
+  .mainOuter > * {
+    width: 0px;
+    height: 0px;
+    font-size: 0px;
+    transform: translateX(-100%);
+  }
+  .mainOuter > * > * {
+    width: 0px;
+    height: 0px;
+    font-size: 0px;
+    transform: translateX(-100%);
+  }
+  .mainOuter > * > * > * {
+    width: 0px;
+    height: 0px;
+    font-size: 0px;
+    transform: translateX(-100%);
+  }
+  .rotate {
+    transform: translateX(0%);
+    z-index: -32768;
+    width: 100%;
+    color: white;
+  }
+  .largeText {
+    font-size: 10vh;
+    letter-spacing: .1vw;
+    margin-bottom: 2vh;
+    margin-top: 4vh;
+  }
+  .mainOuter {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 50%;
+    height: 1vh;
+  }
+}
+
 .titleFont {
   font-family: 'Passion One', cursive;
 }
@@ -32,14 +96,16 @@ Thanks for using RealtimeColors.com!
   position: absolute;
   right: 1vw;
 }
-.mainOuter {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  width: 100%;
-  height: 50vh;
-  margin-top: 20vh;
+.shiftDel {
+  left: -2vw;
+  top: 1vh;
+}
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 100,
+  'GRAD' 0,
+  'opsz' 48
 }
 .scoreBoardContainer {
   display: flex;
@@ -65,16 +131,9 @@ Thanks for using RealtimeColors.com!
   border-radius: 1vh;
   color: white;
   position: absolute;
-  left: -4.5vh;
 }
 .selected {
   background-color: #73c9c6;
-}
-.largeText {
-  font-size: 20vh;
-  letter-spacing: 5px;
-  margin-bottom: 2vh;
-  margin-top: 4vh;
 }
 .mediumText {
   font-size: 5vh;
@@ -158,6 +217,7 @@ body {
 }
 .hide {
   visibility: hidden;
+  transition: all .2s;
 }
 .buttonClass {
   height: 8vh;
@@ -225,12 +285,11 @@ button:active {
 
 .flipCard {
   animation-name: cardFlip;
-  animation-duration: 200ms;
+  animation-duration: 450ms;
 }
 @keyframes cardFlip {
-  0% {transform: scaleX(100%);}
-  50% {transform: scaleX(0%);}
-  100% {transform: scaleX(100%);}
+  100% {transform: rotateY(0deg);}
+  0% {transform: rotateY(180deg);}
 }
 .cardText {
   font-size: 4vh;
@@ -240,10 +299,9 @@ button:active {
 }
 .flipBack {
   animation-name: flipBackCardAnimation;
-  animation-duration: 300ms;
+  animation-duration: 450ms;
 }
 @keyframes flipBackCardAnimation {
-  0% {transform: scaleX(100%);}
-  50% {transform: scaleX(0%);}
-  100% {transform: scaleX(100%);}
+  0% {transform: rotateY(0deg);}
+  100% {transform: rotateY(180deg);}
 }
