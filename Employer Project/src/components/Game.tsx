@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Card from './Card'
 import { getCookie, setCookie, getPlayerCookie, setPlayerCookie, updateCurrentPlayerCookie } from '../App';
+import { HtmlModel } from './HtmlRotating';
 
 const Game = ({gameOver}) => {
   const distinctCards = 12;
@@ -95,6 +96,9 @@ const Game = ({gameOver}) => {
         {cards ? cards.map((card, key) => <Card cardFlipped={cardFlipped} cardClicked={cardClicked} contents={card} number={key} cardNumber={selectedCards}/>) : null}
       </div>
       {/* <button onClick={() => {genCards()}}>Reset</button> */}
+      <canvas>
+        <HtmlModel />
+      </canvas>
     </div>
   )
 }
