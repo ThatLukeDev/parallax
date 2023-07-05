@@ -13,6 +13,70 @@ Thanks for using RealtimeColors.com!
 */
 @import url('https://fonts.googleapis.com/css2?family=Passion+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Space+Mono&display=swap');
+
+@media screen and (orientation: landscape) {
+  .rotate {
+    width: 0px;
+    height: 0px;
+    transform: translateX(-100%);
+  }
+  .largeText {
+    font-size: 20vh;
+    letter-spacing: 5px;
+    margin-bottom: 2vh;
+    margin-top: 4vh;
+  }
+  .mainOuter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 50vh;
+    margin-top: 20vh;
+  }
+}
+
+@media screen and (orientation: portrait) {
+  .mainOuter > * {
+    width: 0px;
+    height: 0px;
+    font-size: 0px;
+    transform: translateX(-100%);
+  }
+  .mainOuter > * > * {
+    width: 0px;
+    height: 0px;
+    font-size: 0px;
+    transform: translateX(-100%);
+  }
+  .mainOuter > * > * > * {
+    width: 0px;
+    height: 0px;
+    font-size: 0px;
+    transform: translateX(-100%);
+  }
+  .rotate {
+    transform: translateX(0%);
+    z-index: -32768;
+    width: 100%;
+    color: white;
+  }
+  .largeText {
+    font-size: 10vh;
+    letter-spacing: .1vw;
+    margin-bottom: 2vh;
+    margin-top: 4vh;
+  }
+  .mainOuter {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 50%;
+    height: 1vh;
+  }
+}
+
 .titleFont {
   font-family: 'Passion One', cursive;
 }
@@ -43,15 +107,6 @@ Thanks for using RealtimeColors.com!
   'GRAD' 0,
   'opsz' 48
 }
-.mainOuter {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  width: 100%;
-  height: 50vh;
-  margin-top: 20vh;
-}
 .scoreBoardContainer {
   display: flex;
   flex-direction: column;
@@ -79,12 +134,6 @@ Thanks for using RealtimeColors.com!
 }
 .selected {
   background-color: #73c9c6;
-}
-.largeText {
-  font-size: 20vh;
-  letter-spacing: 5px;
-  margin-bottom: 2vh;
-  margin-top: 4vh;
 }
 .mediumText {
   font-size: 5vh;

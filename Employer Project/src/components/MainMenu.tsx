@@ -50,6 +50,7 @@ const [scoreBoardEntries, setScoreBoardEntries] = useState([])
 
   return (
     <div className='reset'>
+      <img className="rotate" src="src/rotate.png" />
       <div className='mainOuter smallText'>
         <h1 className='titleFont largeText primaryColour'>BYTE FLIPPER</h1>
         <div className='formContainer'>
