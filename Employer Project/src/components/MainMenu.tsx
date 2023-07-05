@@ -29,7 +29,12 @@ const [scoreBoardEntries, setScoreBoardEntries] = useState([])
       setCookie("turns", getPlayerCookie(getCookie("currentPlayer")!)[3])
       setCookie("timer", getPlayerCookie(getCookie("currentPlayer")!)[4])
     }
-    setPlayerCookie(getCookie("currentPlayer")!, Number(getCookie("amountOfCards")), Number(getCookie("highscore")), Number(getCookie("turns")), Number(getCookie("timer")));
+    setPlayerCookie(getCookie("currentPlayer")!,
+      Number(getCookie("amountOfCards")),
+      Number(getCookie("highscore")),
+      Number(getCookie("turns")),
+      Number(getCookie("timer"))
+    );
     setState(false);
   }
   // let chooseAmount = (amount : number) => {
@@ -53,7 +58,11 @@ const [scoreBoardEntries, setScoreBoardEntries] = useState([])
       let name = currentCookie.split("=")[0];
       let content = currentCookie.split("=")[1].split(", ");
       if (name.substring(0,7) == "PLAYER_") {
-        scoreArray[count] = {userName: name.substring(7, name.length), cardNumber: `${Number(content[4]) / 2}s-${content[3]}`, score: `${content[2]}/${Number(content[1]) / 2}`}
+        scoreArray[count] = {
+          userName: name.substring(7, name.length),
+          cardNumber: `${Math.floor(Number(content[4]) / 120)}m${(Number(content[4]) / 2) % 60}s-${content[3]}`,
+          score: `${content[2]}/${Number(content[1]) / 2}`
+        }
         count++
       }
     })
