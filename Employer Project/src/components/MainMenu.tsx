@@ -7,7 +7,7 @@ const [scoreBoardEntries, setScoreBoardEntries] = useState([])
   // const enterToScoreboard = (username : string, amountOfCards : number, highscore : number) => {
     
   // }
-  let clearScoreboard = () => {
+  const clearScoreboard = () => {
     document.getElementById("scoreboardBody")!.innerHTML = "<tr><th>___</th><th>USERNAME</th><th>CARDS</th><th>SCORE</th></tr>";
   }
   const play = () => {
