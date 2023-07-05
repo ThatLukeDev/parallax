@@ -3,16 +3,16 @@ import { getCookie, setCookie, getPlayerCookie, setPlayerCookie, updateCurrentPl
 import ScoreComponent from './ScoreComponent';
 
 const MainMenu = ({setState}) => {
-const [scoreBoardEntries, setScoreBoardEntries] = useState([])
+const [scoreBoardEntries, setScoreBoardEntries] = useState([]);
   // const enterToScoreboard = (username : string, amountOfCards : number, highscore : number) => {
     
   // }
   const invertArray = (array) => {
-    let temp
+    let temp;
     for (let i = 0; i < Math.ceil(array.length / 2); i++) {
-      temp = array[i]
-      array[i] = array[array.length - (i+1)]
-      array[array.length - (i+1)] = temp
+      temp = array[i];
+      array[i] = array[array.length - (i+1)];
+      array[array.length - (i+1)] = temp;
     }
     return array;
   }
@@ -25,9 +25,9 @@ const [scoreBoardEntries, setScoreBoardEntries] = useState([])
     setCookie("turns", "0");
     setCookie("timer", "0");
     if (getCookie("PLAYER_" + getCookie("currentPlayer")) != null) {
-      setCookie("highscore", getPlayerCookie(getCookie("currentPlayer")!)[2])
-      setCookie("turns", getPlayerCookie(getCookie("currentPlayer")!)[3])
-      setCookie("timer", getPlayerCookie(getCookie("currentPlayer")!)[4])
+      setCookie("highscore", getPlayerCookie(getCookie("currentPlayer")!)[2]);
+      setCookie("turns", getPlayerCookie(getCookie("currentPlayer")!)[3]);
+      setCookie("timer", getPlayerCookie(getCookie("currentPlayer")!)[4]);
     }
     setPlayerCookie(getCookie("currentPlayer")!,
       Number(getCookie("amountOfCards")),
@@ -43,17 +43,17 @@ const [scoreBoardEntries, setScoreBoardEntries] = useState([])
     setCookie("amountOfCards", cardNo.toString());
     // document.cookie = cardNo;
     document.querySelectorAll(".squareBtn").forEach((button) => {
-      button.classList.remove("selected")
+      button.classList.remove("selected");
     })
-    document.getElementById(`card${cardNo}`)?.classList.add("selected")
-    console.log(cardNo)
+    document.getElementById(`card${cardNo}`)?.classList.add("selected");
+    console.log(cardNo);
   }
-  const [scoreBoard, setScoreBoard] = useState()
+  const [scoreBoard, setScoreBoard] = useState();
   useEffect(() => {
-    toggleButtons(16)
+    toggleButtons(16);
     // clearScoreboard();
     let count = 0;
-    let scoreArray = []
+    let scoreArray = [];
     document.cookie.split("; ").forEach((currentCookie) => {
       let name = currentCookie.split("=")[0];
       let content = currentCookie.split("=")[1].split(", ");
@@ -62,8 +62,8 @@ const [scoreBoardEntries, setScoreBoardEntries] = useState([])
           userName: name.substring(7, name.length),
           cardNumber: `${Math.floor(Number(content[4]) / 120)}m${(Number(content[4]) / 2) % 60}s-${content[3]}`,
           score: `${content[2]}/${Number(content[1]) / 2}`
-        }
-        count++
+        };
+        count++;
       }
     })
     scoreArray = scoreArray.sort((a, b) => {
@@ -75,9 +75,9 @@ const [scoreBoardEntries, setScoreBoardEntries] = useState([])
       return 0;
     })
     scoreArray = invertArray(scoreArray);
-    setScoreBoard(scoreArray)
+    setScoreBoard(scoreArray);
   }, [])
-  const buttonsArray = [8, 16, 24]
+  const buttonsArray = [8, 16, 24];
 
   return (
     <div className='reset'>
