@@ -7,6 +7,7 @@ const Game = ({gameOver}) => {
   let timekeeper = 0
   const [timer, setTimer] = useState<number>(0)
   const [turns, setTurns] = useState(0)
+  const [currentScore, setCurrentScore] = useState(0)
   const distinctCards = 12;
   let cardsOnTable = []
   let usedCards = []
@@ -23,7 +24,8 @@ const Game = ({gameOver}) => {
     setInterval(() => {
       timekeeper += 1;
       setCookie("timer", timekeeper.toString())
-      setPlayerCookie(getCookie("currentPlayer")!, Number(getCookie("amountOfCards")), currentScore, turns, timekeeper)
+      setPlayerCookie(getCookie("currentPlayer")!, Number(getCookie("amountOfCards")), Number(getCookie("highscore")), Number(getCookie("turns")), timekeeper)
+      console.log(currentScore)
     }, 1000);
   }, [])
   
@@ -53,7 +55,6 @@ const Game = ({gameOver}) => {
     selectedKey = -1;
   }
 
-  const [currentScore, setCurrentScore] = useState(0)
   var countTwo = 0
   const increment = (number:number) => {
     if (number != 0) {
@@ -69,10 +70,11 @@ const Game = ({gameOver}) => {
       if (countTwo == 2) {
         setCookie("allowFlipCards", "0")
         setTurns(turns + 1)
+        setCookie("turns", (Number(getCookie("turns"))+1).toString())
       }
       if (cardKey == selectedCard) {
         setCardFlipped([cardKey, "delete"]);
-        setCurrentScore(currentScore + 1);
+        setCookie("highscore", (Number(getCookie("highscore"))+1).toString())
         countTwo = 0;
         setCookie("allowFlipCards", "1");
       }
@@ -99,7 +101,6 @@ const Game = ({gameOver}) => {
   }, [countTwo])
   useEffect(() => {
     if (Number(getCookie("highscore")) < currentScore) {
-      console.log(turns, Number(getCookie("timer")))
       setPlayerCookie(getCookie("currentPlayer")!, Number(getCookie("amountOfCards")), currentScore, turns, Number(getCookie("timer")))
     }
     if (currentScore >= Number(getCookie("amountOfCards")) / 2) {
