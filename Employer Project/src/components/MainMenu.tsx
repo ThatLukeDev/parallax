@@ -53,7 +53,7 @@ const [scoreBoardEntries, setScoreBoardEntries] = useState([])
       let name = currentCookie.split("=")[0];
       let content = currentCookie.split("=")[1].split(", ");
       if (name.substring(0,7) == "PLAYER_") {
-        scoreArray[count] = {userName: name.substring(7, name.length), cardNumber: `${Number(content[4]) / 2}s-${content[3]}`, score: `${content[2]}/${content[1]}`}
+        scoreArray[count] = {userName: name.substring(7, name.length), cardNumber: `${Number(content[4]) / 2}s-${content[3]}`, score: `${content[2]}/${Number(content[1]) / 2}`}
         count++
       }
     })
