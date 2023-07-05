@@ -7,7 +7,7 @@ const ScoreComponent = ({username, cards, score}) => {
   }
   return (
     <div className='scoreRow' id={`scoreboardBody_${username}`}>
-      <button className='squareBtn2 removeBorder' onClick={() => removeSelf()}>X</button>
+      <h1 className='squareBtn2 removeBorder' onClick={() => removeSelf()}>X</h1>
       <h1>{username}</h1>
       <h1 className='rightElementTwo'>{cards}</h1>
       <h1 className='rightElement'>{score}</h1>
