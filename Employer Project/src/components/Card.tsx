@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { getCookie, setCookie, getPlayerCookie, setPlayerCookie, updateCurrentPlayerCookie } from '../App';
+import ModelOnCard from './ModelOnCard';
 
 const Card = ({cardFlipped, contents, cardClicked, number, cardNumber}) => {
   const [shown, setShown] = useState(false)
@@ -27,8 +28,22 @@ const Card = ({cardFlipped, contents, cardClicked, number, cardNumber}) => {
       document.querySelector(`.${number}`)?.classList.add("hide")
     }, 1000)
   }
+  // const dict = {
+  //   0: "<>",
+  //   1: "<p>",
+  //   2: "<h1>",
+  //   3: "<div>",
+  //   4: "<input>",
+  //   5: "<form>",
+  //   6: "<script>",
+  //   7: "<style>",
+  //   8: "<span>",
+  //   9: "<dfm>",
+  //   10: "<br>",
+  //   11: "<a>",
+  // }
   const dict = {
-    0: "<>",
+    0: "HtmlModel",
     1: "<p>",
     2: "<h1>",
     3: "<div>",
@@ -48,6 +63,7 @@ const Card = ({cardFlipped, contents, cardClicked, number, cardNumber}) => {
         cardClicked(contents, number)
       }
     }}>
+      <ModelOnCard modelName={dict[contents]}/>
       {shown ? <p className='textInCard'>{dict[contents]}</p> : <div></div>}
     </div>
   )
