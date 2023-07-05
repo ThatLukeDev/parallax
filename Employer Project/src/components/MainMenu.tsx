@@ -22,10 +22,14 @@ const [scoreBoardEntries, setScoreBoardEntries] = useState([])
   const play = () => {
     setCookie("currentPlayer", document.getElementById("playernameBox")!.value.replace(/(, )|<.+?>/g,"").substring(0,10));
     setCookie("highscore", "0");
+    setCookie("turns", "0");
+    setCookie("timer", "0");
     if (getCookie("PLAYER_" + getCookie("currentPlayer")) != null) {
       setCookie("highscore", getPlayerCookie(getCookie("currentPlayer")!)[2])
+      setCookie("turns", getPlayerCookie(getCookie("currentPlayer")!)[3])
+      setCookie("timer", getPlayerCookie(getCookie("currentPlayer")!)[4])
     }
-    setPlayerCookie(getCookie("currentPlayer")!, Number(getCookie("amountOfCards")), Number(getCookie("highscore")));
+    setPlayerCookie(getCookie("currentPlayer")!, Number(getCookie("amountOfCards")), Number(getCookie("highscore")), Number(getCookie("turns")), Number(getCookie("timer")));
     setState(false);
   }
   // let chooseAmount = (amount : number) => {

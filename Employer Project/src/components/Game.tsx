@@ -4,6 +4,9 @@ import { getCookie, setCookie, getPlayerCookie, setPlayerCookie, updateCurrentPl
 import { HtmlModel } from './HtmlRotating';
 
 const Game = ({gameOver}) => {
+  let timekeeper = 0
+  const [timer, setTimer] = useState<number>(0)
+  const [turns, setTurns] = useState(0)
   const distinctCards = 12;
   let cardsOnTable = []
   let usedCards = []
@@ -17,8 +20,11 @@ const Game = ({gameOver}) => {
   useEffect(() => {
     genCards()
     setCookie("allowFlipCards", "1");
+    setInterval(() => {
+      timekeeper += 1;
+      setCookie("timer", timekeeper.toString())
+    }, 1000);
   }, [])
-  
   
   const genCards = () => {
     setCards([])
@@ -56,18 +62,18 @@ const Game = ({gameOver}) => {
       countTwo = 0
     }
   }
-  console.log(countTwo)
   const cardClicked = (cardKey:number, key:number) => {
     if (key != selectedKey) {
       countTwo++
       if (countTwo == 2) {
         setCookie("allowFlipCards", "0")
+        setTurns(turns + 1)
       }
       if (cardKey == selectedCard) {
-        setCardFlipped([cardKey, "delete"])
-        setCurrentScore(currentScore + 1)
-        countTwo = 0
-        setCookie("allowFlipCards", "1")
+        setCardFlipped([cardKey, "delete"]);
+        setCurrentScore(currentScore + 1);
+        countTwo = 0;
+        setCookie("allowFlipCards", "1");
       }
       // console.log("WHY IS THIS NOT EXCECUTING")
       else if (countTwo == 2) {
@@ -87,14 +93,13 @@ const Game = ({gameOver}) => {
     selectedKey = key
     // increment()
   }
-  console.log(countTwo)
   useEffect(() => {
     setSelectedCards(countTwo)
   }, [countTwo])
-  console.log(cardFlipped)
   useEffect(() => {
     if (Number(getCookie("highscore")) < currentScore) {
-      setPlayerCookie(getCookie("currentPlayer"), Number(getCookie("amountOfCards")), currentScore)
+      console.log(turns, Number(getCookie("timer")))
+      setPlayerCookie(getCookie("currentPlayer")!, Number(getCookie("amountOfCards")), currentScore, turns, Number(getCookie("timer")))
     }
     if (currentScore >= Number(getCookie("amountOfCards")) / 2) {
       setTimeout(() => {
