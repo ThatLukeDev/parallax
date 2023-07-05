@@ -44,6 +44,14 @@ const [scoreBoardEntries, setScoreBoardEntries] = useState([])
         count++
       }
     })
+    scoreArray = scoreArray.sort((a, b) => {
+      if (a.score > b.score) {
+        return -1;
+      } else if (b.score > a.score) {
+        return 1;
+      }
+      return 0;
+    })
     setScoreBoard(scoreArray)
   }, [])
   const buttonsArray = [8, 16, 24]
