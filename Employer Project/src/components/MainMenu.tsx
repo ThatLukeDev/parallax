@@ -7,6 +7,15 @@ const [scoreBoardEntries, setScoreBoardEntries] = useState([])
   // const enterToScoreboard = (username : string, amountOfCards : number, highscore : number) => {
     
   // }
+  const invertArray = (array) => {
+    let temp
+    for (let i = 0; i < Math.ceil(array.length / 2); i++) {
+      temp = array[i]
+      array[i] = array[array.length - (i+1)]
+      array[array.length - (i+1)] = temp
+    }
+    return array;
+  }
   const clearScoreboard = () => {
     document.getElementById("scoreboardBody")!.innerHTML = "<tr><th>___</th><th>USERNAME</th><th>CARDS</th><th>SCORE</th></tr>";
   }
@@ -45,13 +54,14 @@ const [scoreBoardEntries, setScoreBoardEntries] = useState([])
       }
     })
     scoreArray = scoreArray.sort((a, b) => {
-      if (a.score > b.score) {
+      if (a.score < b.score) {
         return -1;
       } else if (b.score > a.score) {
         return 1;
       }
       return 0;
     })
+    scoreArray = invertArray(scoreArray);
     setScoreBoard(scoreArray)
   }, [])
   const buttonsArray = [8, 16, 24]
