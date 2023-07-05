@@ -19,6 +19,10 @@ const Game = ({gameOver}) => {
   
   
   const genCards = () => {
+    setCards([])
+    document.querySelectorAll(".cardOuter").forEach((doc) => {
+      doc.classList.remove("hide")
+    })
     let amountOfCards = parseInt(getCookie("amountOfCards")!);
     let tableCards = Array(amountOfCards).fill(-1);
     for (let i = 0; i < amountOfCards; i += 2) {
@@ -90,6 +94,7 @@ const Game = ({gameOver}) => {
       <div className='cardHolder'>
         {cards ? cards.map((card, key) => <Card cardFlipped={cardFlipped} cardClicked={cardClicked} contents={card} number={key} cardNumber={selectedCards}/>) : null}
       </div>
+      {/* <button onClick={() => {genCards()}}>Reset</button> */}
     </div>
   )
 }
