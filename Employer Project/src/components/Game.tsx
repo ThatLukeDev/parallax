@@ -74,11 +74,11 @@ const Game = ({gameOver}) => {
       }
       if (cardKey == selectedCard) {
         setCardFlipped([cardKey, "delete"]);
+        setCurrentScore(currentScore + 1)
         setCookie("highscore", (Number(getCookie("highscore"))+1).toString());
         countTwo = 0;
         setCookie("allowFlipCards", "1");
       }
-      // console.log("WHY IS THIS NOT EXCECUTING")
       else if (countTwo == 2) {
         setCardFlipped(["universalNo", false]);
         
@@ -105,21 +105,32 @@ const Game = ({gameOver}) => {
     }
     if (currentScore >= Number(getCookie("amountOfCards")) / 2) {
       setTimeout(() => {
-        gameOver(true);
+        setPlayerCookie(getCookie("currentPlayer")!, Number(getCookie("amountOfCards")), Number(getCookie("highscore")), Number(getCookie("turns")), Number(getCookie("timer")));
+
+        window.location.reload()
       }, 400);
     }
   }, [currentScore]);
-
+  let easterEgg = false
+  // useEffect(() => {
+  easterEgg = getCookie("dimension") == "4D"
+  //   if (easterEgg) {
+  //     document.getElementsByClassName("easterImage")?.src = `/${Math.floor(Math.random() * 3)}.png`
+  //   }
+  // }, [])
   return (
-    <div className='gameHolder'>
-        {/* <audio id="winSound">
-          <source src="src/confetti.mp3" type="audio/mpeg" />
-        </audio> */}
-      <div className='cardHolder'>
-        {cards ? cards.map((card, key) => <Card cardFlipped={cardFlipped} cardClicked={cardClicked} contents={card} number={key} cardNumber={selectedCards}/>) : null}
+    <div>
+      <div className="resetBtnFlex"><button className="resetBtn removeBorder primaryColour smallText squareBtn3 buttonClick" onClick={() => { location.reload() }}>Home</button></div>
+      <div className='gameHolder'>
+        <div className='cardHolder'>
+          {cards && !easterEgg ? cards.map((card, key) => <Card cardFlipped={cardFlipped} cardClicked={cardClicked} contents={card} number={key} cardNumber={selectedCards}/>) : null}
+          {easterEgg ? <div className='formContainer text-white absoluteCard'>
+            <p>To verify you are able to enter the fourth dimension, please enter the word below:</p>
+            <img src={`/${Math.floor(Math.random() * 5)}.png`} className='easterImage' />
+            <input className='text-white'></input>
+          </div> : null}
+        </div>
       </div>
-      {/* <button onClick={() => {genCards()}}>Reset</button> */}
-      <CardModelContainer cardToDisplay={"BODYMODEL"} />
     </div>
   )
 }
