@@ -4,6 +4,9 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import MainMenu from './components/MainMenu'
 import Game from './components/Game'
+import { analytics, app } from './config/firebase'
+
+
 
 export let getCookie = (name : string) => {
   let retval = null
@@ -29,6 +32,8 @@ export let updateCurrentPlayerCookie = () => {
 }
 function App() {
   const [menuEnabled, setMenuEnabled] = useState(true)
+  const appName = app.name
+  const analyticsName = analytics.app
   return (
     <div>
       <div className='overlap'>
