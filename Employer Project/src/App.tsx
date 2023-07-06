@@ -65,9 +65,7 @@ function App() {
       }
     }
     setInterval(draw, 30)
-    
   }, [])
-
 
   const [menuEnabled, setMenuEnabled] = useState(true)
   return (
