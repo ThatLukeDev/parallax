@@ -307,7 +307,7 @@ body {
 }
 .hide {
   transition: all .2s;
-  transform: translateY(-1000%);
+  transform: translateY(-100vh);
 }
 .buttonClass {
   height: 8vh;
