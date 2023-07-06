@@ -67,7 +67,7 @@ const Card = ({cardFlipped, contents, cardClicked, number, cardNumber}) => {
       }
     }}>
       {!twod && shown ? <CardModelContainer cardToDisplay={dict[contents]} /> : <div></div>}
-      {twod && shown ? <p className='textInCard'>{dict[contents]}</p> : <div></div>}
+      {twod && shown ? <p className='textInCard'>{dict2D[contents]}</p> : <div></div>}
     </div>
   )
 }
