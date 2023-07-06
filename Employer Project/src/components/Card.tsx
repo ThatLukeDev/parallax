@@ -46,18 +46,18 @@ const Card = ({cardFlipped, contents, cardClicked, number, cardNumber}) => {
     11: "STYLEMODEL",
   };
   const dict2D = {
-    0: "<BODY>",
-    1: "<BUTTON>",
-    2: "<CANVAS>",
-    3: "<DIV>",
-    4: "<HEADER>",
-    5: "<HEAD>",
-    6: "<HTML>",
-    7: "<IMG>",
-    8: "<INPUT>",
-    9: "<P>",
-    10: "<SCRIPT>",
-    11: "<STYLE>",
+    0: "<body>",
+    1: "<button>",
+    2: "<canvas>",
+    3: "<div>",
+    4: "<header>",
+    5: "<head>",
+    6: "<html>",
+    7: "<img>",
+    8: "<input>",
+    9: "<p>",
+    10: "<script>",
+    11: "<style>",
   };
   return (
     <div className={`cardOuter ${number} cardText`} onClick={() => {
