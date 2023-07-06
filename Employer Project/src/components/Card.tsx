@@ -28,6 +28,7 @@ const Card = ({cardFlipped, contents, cardClicked, number, cardNumber}) => {
   // console.log(cardFlipped)
   if (cardFlipped != undefined && shown && cardFlipped[0] == contents && cardFlipped[1] == "delete") {
     setTimeout(() => {
+      setShown(false)
       document.querySelector(`.${number}`)?.classList.add("hide");
     }, 1000);
   }

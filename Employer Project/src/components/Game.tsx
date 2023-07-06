@@ -79,7 +79,6 @@ const Game = ({gameOver}) => {
         countTwo = 0;
         setCookie("allowFlipCards", "1");
       }
-      // console.log("WHY IS THIS NOT EXCECUTING")
       else if (countTwo == 2) {
         setCardFlipped(["universalNo", false]);
         
