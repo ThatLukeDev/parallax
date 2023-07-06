@@ -125,7 +125,7 @@ const Game = ({gameOver}) => {
           {cards && !easterEgg ? cards.map((card, key) => <Card cardFlipped={cardFlipped} cardClicked={cardClicked} contents={card} number={key} cardNumber={selectedCards}/>) : null}
           {easterEgg ? <div className='formContainer text-white absoluteCard'>
             <p>To verify you are able to go to the fourth dimension, please Enter the word below</p>
-            <img src={`/${Math.floor(Math.random() * 15)}.png`} className='easterImage' />
+            <img src={`/${Math.floor(Math.random() * 5)}.png`} className='easterImage' />
             <input className='text-white'></input>
           </div> : null}
         </div>
