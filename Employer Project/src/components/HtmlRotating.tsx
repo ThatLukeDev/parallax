@@ -1,14 +1,15 @@
+import React, { useRef, useEffect } from "react";
+import { useGLTF, useAnimations } from "@react-three/drei";
 
-import React, { useEffect, useRef } from "react";
-import { useGLTF, useAnimations, OrbitControls } from "@react-three/drei";
-
-export const HtmlModel = (props) => {
+let modelSelectTwo = "";
+export const HtmlModel = (props, {modelSelect}) => {
+  console.log(modelSelect)
+  modelSelectTwo = modelSelect
   const group = useRef();
-  const { nodes, materials, animations } = useGLTF("/htmlTag.glb");
+  const { nodes, materials, animations } = useGLTF(`/${modelSelect}.glb`);
   const { actions, names } = useAnimations(animations, group);
-  console.log(names)
   useEffect(() => {
-    actions[names[0]]?.reset().fadeIn(0.5).play()
+    actions[names[0]]?.reset().fadeIn(.5).play()
   }, [])
   return (
     <group ref={group} {...props} dispose={null}>
@@ -19,11 +20,14 @@ export const HtmlModel = (props) => {
           receiveShadow
           geometry={nodes.Text.geometry}
           material={materials["Material.001"]}
+          position={[-0.006, 0, 0.023]}
           rotation={[Math.PI / 2, Math.PI / 4, 0]}
         />
       </group>
     </group>
   );
 }
+if (modelSelectTwo != "") {
+  useGLTF.preload(`/${modelSelectTwo}.glb`);
+}
 
-useGLTF.preload("/htmlTag.glb");

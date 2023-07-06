@@ -112,6 +112,16 @@ Thanks for using RealtimeColors.com!
   flex-direction: column;
   width: 100%;
 }
+.deleteContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+.icon {
+  text-align: center;
+}
 .removeBorder {
   border-style: none;
   margin-left: .25vw;
