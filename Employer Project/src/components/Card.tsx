@@ -5,6 +5,8 @@ import CardModelContainer from './CardModelContainer'
 
 const Card = ({cardFlipped, contents, cardClicked, number, cardNumber}) => {
   const [shown, setShown] = useState(false);
+  let easterEgg = getCookie("dimension") == "4D"
+  let twod = getCookie("dimension") == "2D"
 
   // console.log(cardNumber);
 
@@ -43,6 +45,20 @@ const Card = ({cardFlipped, contents, cardClicked, number, cardNumber}) => {
     10: "SCRIPTMODEL",
     11: "STYLEMODEL",
   };
+  const dict2D = {
+    0: "<BODY>",
+    1: "<BUTTON>",
+    2: "<CANVAS>",
+    3: "<DIV>",
+    4: "<HEADER>",
+    5: "<HEAD>",
+    6: "<HTML>",
+    7: "<IMG>",
+    8: "<INPUT>",
+    9: "<P>",
+    10: "<SCRIPT>",
+    11: "<STYLE>",
+  };
   return (
     <div className={`cardOuter ${number} cardText`} onClick={() => {
       if (getCookie("allowFlipCards") == "1") {
@@ -50,7 +66,8 @@ const Card = ({cardFlipped, contents, cardClicked, number, cardNumber}) => {
         cardClicked(contents, number)
       }
     }}>
-      {shown ? <CardModelContainer cardToDisplay={dict[contents]} /> : <div></div>}
+      {!twod && shown ? <CardModelContainer cardToDisplay={dict[contents]} /> : <div></div>}
+      {twod && shown ? <p className='textInCard'>{dict[contents]}</p> : <div></div>}
     </div>
   )
 }
