@@ -111,15 +111,17 @@ const Game = ({gameOver}) => {
   }, [currentScore]);
 
   return (
-    <div className='gameHolder'>
+    <div>
+      <div className="resetBtnFlex"><button className="resetBtn" onClick={() => {genCards()}}>Reset</button></div>
+      <div className='gameHolder'>
         {/* <audio id="winSound">
           <source src="src/confetti.mp3" type="audio/mpeg" />
         </audio> */}
-      <div className='cardHolder'>
-        {cards ? cards.map((card, key) => <Card cardFlipped={cardFlipped} cardClicked={cardClicked} contents={card} number={key} cardNumber={selectedCards}/>) : null}
+        <div className='cardHolder'>
+          {cards ? cards.map((card, key) => <Card cardFlipped={cardFlipped} cardClicked={cardClicked} contents={card} number={key} cardNumber={selectedCards}/>) : null}
+        </div>
+        {/* <CardModelContainer cardToDisplay={"BODYMODEL"} /> */}
       </div>
-      {/* <button onClick={() => {genCards()}}>Reset</button> */}
-      <CardModelContainer cardToDisplay={"BODYMODEL"} />
     </div>
   )
 }
