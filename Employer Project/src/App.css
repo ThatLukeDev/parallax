@@ -179,9 +179,16 @@ Thanks for using RealtimeColors.com!
 }
 .squareBtn3 {
   background-color: #5d7170;
-  border-radius: 1vh;
+  border-radius: .4vh;
   color: white;
+  font-size: 6vh;
   position: absolute;
+  margin-left: 2vh;
+  margin-top: 2vh;
+  transition: all .4s;
+}
+.squareBtn3:active {
+  transform: scale(95%);
 }
 .squareBtn3:hover {
   cursor: pointer;
