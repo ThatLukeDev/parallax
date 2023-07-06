@@ -2,8 +2,7 @@ import React, { useRef, useEffect } from "react";
 import { useGLTF, useAnimations } from "@react-three/drei";
 
 let modelSelectTwo = "";
-export const HtmlModel = (props, {modelSelect}) => {
-  console.log(modelSelect)
+export const HtmlModel = ({props, modelSelect}) => {
   modelSelectTwo = modelSelect
   const group = useRef();
   const { nodes, materials, animations } = useGLTF(`/${modelSelect}.glb`);

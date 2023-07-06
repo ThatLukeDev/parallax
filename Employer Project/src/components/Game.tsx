@@ -119,7 +119,7 @@ const Game = ({gameOver}) => {
         {cards ? cards.map((card, key) => <Card cardFlipped={cardFlipped} cardClicked={cardClicked} contents={card} number={key} cardNumber={selectedCards}/>) : null}
       </div>
       {/* <button onClick={() => {genCards()}}>Reset</button> */}
-      <CardModelContainer cardToDisplay={"BODYMODEL"} />
+      {/* <CardModelContainer cardToDisplay={"BODYMODEL"} /> */}
     </div>
   )
 }

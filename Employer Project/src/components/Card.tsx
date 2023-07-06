@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { getCookie, setCookie, getPlayerCookie, setPlayerCookie, updateCurrentPlayerCookie } from '../App';
+import CardModelContainer from './CardModelContainer'
+
 
 const Card = ({cardFlipped, contents, cardClicked, number, cardNumber}) => {
   const [shown, setShown] = useState(false);
@@ -28,18 +30,18 @@ const Card = ({cardFlipped, contents, cardClicked, number, cardNumber}) => {
     }, 1000);
   }
   const dict = {
-    0: "<>",
-    1: "<p>",
-    2: "<h1>",
-    3: "<div>",
-    4: "<input>",
-    5: "<form>",
-    6: "<script>",
-    7: "<style>",
-    8: "<span>",
-    9: "<dfm>",
-    10: "<br>",
-    11: "<a>",
+    0: "BODYMODEL",
+    1: "BUTTONMODEL",
+    2: "CANVASMODEL",
+    3: "DIVMODEL",
+    4: "HEADERMODEL",
+    5: "HEADMODEL",
+    6: "HTMLMODEL",
+    7: "IMGMODEL",
+    8: "INPUTMODEL",
+    9: "PMODEL",
+    10: "SCRIPTMODEL",
+    11: "STYLEMODEL",
   };
   return (
     <div className={`cardOuter ${number} cardText`} onClick={() => {
@@ -48,7 +50,7 @@ const Card = ({cardFlipped, contents, cardClicked, number, cardNumber}) => {
         cardClicked(contents, number)
       }
     }}>
-      {shown ? <p className='textInCard'>{dict[contents]}</p> : <div></div>}
+      {shown ? <CardModelContainer cardToDisplay={dict[contents]} /> : <div></div>}
     </div>
   )
 }

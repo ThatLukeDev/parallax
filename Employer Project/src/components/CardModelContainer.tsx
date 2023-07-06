@@ -6,7 +6,8 @@ const CardModelContainer = ({cardToDisplay}) => {
   console.log(cardToDisplay)
   return (
     <Canvas className=''>
-      <ambientLight intensity={1} />
+      <ambientLight intensity={100} />
+      <spotLight intensity={300} />
       {cardToDisplay ? <HtmlModel modelSelect={cardToDisplay} /> : null}
     </Canvas>
   )
