@@ -112,7 +112,7 @@ const Game = ({gameOver}) => {
 
   return (
     <div>
-      <div className="resetBtnFlex"><button className="resetBtn" onClick={() => {genCards()}}>Reset</button></div>
+      <div className="resetBtnFlex"><button className="resetBtn removeBorder primaryColour smallText squareBtn3 buttonClick" onClick={() => { location.reload() }}>Home</button></div>
       <div className='gameHolder'>
         <div className='cardHolder'>
           {cards ? cards.map((card, key) => <Card cardFlipped={cardFlipped} cardClicked={cardClicked} contents={card} number={key} cardNumber={selectedCards}/>) : null}
