@@ -233,6 +233,10 @@ Thanks for using RealtimeColors.com!
 body {
   background-color: #0d2120;
   font-family: 'Space Mono', monospace;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  overflow: hidden;
 }
 #scoreboard {
   display: flex;

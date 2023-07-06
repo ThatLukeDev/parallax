@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import './App.css'
 import MainMenu from './components/MainMenu'
 import Game from './components/Game'
@@ -36,8 +36,8 @@ function App() {
     if (!context) {
       return;
     }
-    canvas.width = window.innerWidth
-    canvas.height = window.innerHeight
+    canvas.width = window.outerWidth
+    canvas.height = window.outerHeight
 
     let numbers = "010100000110110001100101011000010111001101100101001000000100011101101001011101100110010100100000011011010110010100100000011000010110111000100000010010100110111101100010001000000110000101110100001000000101000001100001011100100110000101101100011011000110000101111000"
 
