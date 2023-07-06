@@ -105,7 +105,9 @@ const Game = ({gameOver}) => {
     }
     if (currentScore >= Number(getCookie("amountOfCards")) / 2) {
       setTimeout(() => {
-        gameOver(true);
+        setPlayerCookie(getCookie("currentPlayer")!, Number(getCookie("amountOfCards")), Number(getCookie("highscore")), Number(getCookie("turns")), Number(getCookie("timer")));
+
+        window.location.reload()
       }, 400);
     }
   }, [currentScore]);
