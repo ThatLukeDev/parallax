@@ -48,9 +48,17 @@ const [scoreBoardEntries, setScoreBoardEntries] = useState([]);
     document.getElementById(`card${cardNo}`)?.classList.add("selected");
     console.log(cardNo);
   }
+  const toggleDimensionButtons = (cardNo:string) => {
+    setCookie("dimension", cardNo);
+    document.querySelectorAll(".squareBtnD").forEach((button) => {
+      button.classList.remove("selected");
+    })
+    document.getElementById(`dimension${cardNo}`)?.classList.add("selected");
+  }
   const [scoreBoard, setScoreBoard] = useState();
   useEffect(() => {
     toggleButtons(16);
+    toggleDimensionButtons("3D");
     // clearScoreboard();
     let count = 0;
     let scoreArray = [];
@@ -92,6 +100,12 @@ const [scoreBoardEntries, setScoreBoardEntries] = useState([]);
             {buttonsArray.map((current) => 
               <button className='removeBorder secondaryColour smallText squareBtn buttonClick' onClick={() => {toggleButtons(current)}} id={`card${current}`}>{current}</button>
             )}
+          </div>
+          <div id="dimensionSelections">
+            <h1 className='cardHeader'>Select Card Effect</h1>
+            {["2D", "3D", "4D"].map((x) => (
+              <button className='removeBorder secondaryColour smallText squareBtnD buttonClick' onClick={() => {toggleDimensionButtons(x)}} id={`dimension${x}`}>{x}</button>
+            ))}
           </div>
           <h1 className='noMargin primaryColour'>Scoreboard</h1>
           <div className='primaryColour scoreBoardContainer'  id='scoreboard'>

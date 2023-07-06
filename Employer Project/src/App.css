@@ -139,6 +139,13 @@ Thanks for using RealtimeColors.com!
   border-radius: 1vh;
   color: white;
 }
+.squareBtnD {
+  width: 6vh;
+  height: 6vh;
+  background-color: #0d2120;
+  border-radius: 1vh;
+  color: white;
+}
 .squareBtn2 {
   width: 3vh;
   height: 3vh;
@@ -235,6 +242,12 @@ body {
   width: 100%;
   align-items: center;
   margin-top: 2vh;
+  justify-content: center;
+}
+#dimensionSelections {
+  display: flex;
+  width: 100%;
+  align-items: center;
   margin-bottom: 1vh;
   justify-content: center;
 }
