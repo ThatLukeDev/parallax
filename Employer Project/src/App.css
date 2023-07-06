@@ -142,6 +142,9 @@ Thanks for using RealtimeColors.com!
   color: white;
   position: absolute;
 }
+.squareBtn2:hover {
+  cursor: pointer;
+}
 .selected {
   background-color: #73c9c6;
 }
