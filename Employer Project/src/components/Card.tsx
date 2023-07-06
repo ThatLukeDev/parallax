@@ -66,8 +66,9 @@ const Card = ({cardFlipped, contents, cardClicked, number, cardNumber}) => {
         cardClicked(contents, number)
       }
     }}>
-      {!twod && shown ? <CardModelContainer cardToDisplay={dict[contents]} /> : <div></div>}
-      {twod && shown ? <p className='textInCard'>{dict2D[contents]}</p> : <div></div>}
+      {!easterEgg && !twod && shown ? <CardModelContainer cardToDisplay={dict[contents]} /> : <div></div>}
+      {!easterEgg && twod && shown ? <p className='textInCard'>{dict2D[contents]}</p> : <div></div>}
+      {easterEgg && shown ? <p className='textInCard'>{"easter egg\nhere"}</p> : <div></div>}
     </div>
   )
 }
