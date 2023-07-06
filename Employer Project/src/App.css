@@ -373,7 +373,7 @@ button:active {
   gap: .8vh;
   background-color: rgba(0, 0, 0, .5);
   padding: 4vh;
-  border-radius: 2vh;
+  border-radius: 5vh;
 }
 
 .flipCard {
