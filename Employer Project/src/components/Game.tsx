@@ -74,6 +74,7 @@ const Game = ({gameOver}) => {
       }
       if (cardKey == selectedCard) {
         setCardFlipped([cardKey, "delete"]);
+        setCurrentScore(currentScore + 1)
         setCookie("highscore", (Number(getCookie("highscore"))+1).toString());
         countTwo = 0;
         setCookie("allowFlipCards", "1");
