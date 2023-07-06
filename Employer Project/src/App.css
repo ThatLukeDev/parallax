@@ -281,11 +281,12 @@ button:active {
   transform: scale(95%);
 }
 .gameHolder {
-  height: 100%;
+  height: 90vh;
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 }
 .cardHolder {
   display: grid;
@@ -293,7 +294,6 @@ button:active {
   grid-auto-flow: row;
   margin-top: 2vh;
   gap: .2vh;
-  height: 50vh;
 }
 
 .flipCard {
