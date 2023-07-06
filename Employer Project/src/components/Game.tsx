@@ -109,13 +109,24 @@ const Game = ({gameOver}) => {
       }, 400);
     }
   }, [currentScore]);
-
+  let easterEgg = false
+  // useEffect(() => {
+  easterEgg = getCookie("dimension") == "4D"
+  //   if (easterEgg) {
+  //     document.getElementsByClassName("easterImage")?.src = `/${Math.floor(Math.random() * 3)}.png`
+  //   }
+  // }, [])
   return (
     <div>
       <div className="resetBtnFlex"><button className="resetBtn removeBorder primaryColour smallText squareBtn3 buttonClick" onClick={() => { location.reload() }}>Home</button></div>
       <div className='gameHolder'>
         <div className='cardHolder'>
-          {cards ? cards.map((card, key) => <Card cardFlipped={cardFlipped} cardClicked={cardClicked} contents={card} number={key} cardNumber={selectedCards}/>) : null}
+          {cards && !easterEgg ? cards.map((card, key) => <Card cardFlipped={cardFlipped} cardClicked={cardClicked} contents={card} number={key} cardNumber={selectedCards}/>) : null}
+          {easterEgg ? <div className='formContainer text-white absoluteCard'>
+            <p>Please Enter the word below, To verify you are able to go to the fourth dimension</p>
+            <img src={`/${Math.floor(Math.random() * 3) + 1}.png`} className='easterImage' />
+            <input className='text-white'></input>
+          </div> : null}
         </div>
       </div>
     </div>
